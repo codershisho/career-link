@@ -1,0 +1,37 @@
+version: "3"
+
+services:
+  nginx:
+    container_name: "career-link-nginx"
+    build:
+      context: ./docker/nginx
+    ports:
+      - 80:80
+    volumes:
+      - ./:/src
+
+  php:
+    container_name: "career-link-php"
+    build:
+      context: ./docker/php
+    ports:
+      - 5173:5173
+    volumes:
+      - ./:/src
+      - ./docker/php/log:/var/log # xdebug.logの出力先をマウント
+      - /src/node_modules
+      - /src/vendor
+      - ./docker/php/php.ini:/usr/local/etc/php/php.ini
+    extra_hosts:
+      - "host.docker.internal:host-gateway" # xdebug用追加
+  db:
+    image: mariadb:10.9
+    container_name: "career-link-db"
+    volumes:
+      - ./db_data:/var/lib/mysql
+    ports:
+      - 3306:3306
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: career-link

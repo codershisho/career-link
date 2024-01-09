@@ -2,6 +2,7 @@
   <div class="page">
     <p>{{ counter }}</p>
     <button @click="counter += 1">click!</button>
+    <v-btn color="primary">aaaa</v-btn>
   </div>
 </template>
 

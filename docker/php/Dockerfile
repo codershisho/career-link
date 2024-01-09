@@ -27,7 +27,7 @@ RUN pecl install xdebug && \
     docker-php-ext-enable xdebug
 
 # install node
-ENV NODE_VERSION=16.16.0
+ENV NODE_VERSION=18.17.0
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
 ENV NVM_DIR=/root/.nvm
 RUN . "$NVM_DIR/nvm.sh" && nvm install ${NODE_VERSION}

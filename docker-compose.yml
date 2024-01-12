@@ -15,7 +15,8 @@ services:
     build:
       context: ./docker/php
     ports:
-      - 5173:5173
+      - 5173:5173 #vite
+      - 8000:8000 #api
     volumes:
       - ./:/src
       - ./docker/php/log:/var/log # xdebug.logの出力先をマウント

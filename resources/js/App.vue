@@ -41,6 +41,8 @@ const menus = [
   ["mdi-home", "ダッシュボード", "/dashboard"],
   ["mdi-account-circle-outline", "応募者一覧", "/recruits"],
 ];
+
+const data = axios.get("/api/sample");
 </script>
 
 <style>

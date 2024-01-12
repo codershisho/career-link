@@ -20,8 +20,12 @@ const vuetify = createVuetify({
   },
 });
 
+// plugins
+import AxiosPlugin from "./plugins/axios";
+
 const app = createApp(App);
 
 app.use(vuetify);
 app.use(router);
+app.use(AxiosPlugin);
 app.mount("#app");

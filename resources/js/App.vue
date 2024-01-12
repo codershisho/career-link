@@ -38,8 +38,8 @@ import { ref } from "vue";
 const drawer = ref(null);
 
 const menus = [
-  ["mdi-home", "Dashboard", "/dashboard"],
-  ["mdi-account-circle-outline", "Recruits", "/recruits"],
+  ["mdi-home", "ダッシュボード", "/dashboard"],
+  ["mdi-account-circle-outline", "応募者一覧", "/recruits"],
 ];
 </script>
 

@@ -25,7 +25,7 @@
     </v-app-bar> -->
 
     <v-main>
-      <v-container>
+      <v-container class="bg-back h-100">
         <router-view />
       </v-container>
     </v-main>

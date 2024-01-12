@@ -3,6 +3,6 @@ db-no:
 db:
 	docker-compose build
 du:
-	docker-compose up -d --build
+	docker-compose up -d
 dd:
 	docker-compose down

@@ -20,8 +20,8 @@ services:
     volumes:
       - ./:/src
       - ./docker/php/log:/var/log # xdebug.logの出力先をマウント
-      - /src/node_modules
-      - /src/vendor
+      # - /src/node_modules
+      # - /src/vendor
       - ./docker/php/php.ini:/usr/local/etc/php/php.ini
     extra_hosts:
       - "host.docker.internal:host-gateway" # xdebug用追加

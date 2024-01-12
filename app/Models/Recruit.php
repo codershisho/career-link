@@ -13,4 +13,5 @@ class Recruit extends Model
 
     protected $table = 't_recruits';
     protected $guarded = ['id'];
+    protected $dates = ['birth_date', 'join_date'];
 }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\RecruitApi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,4 +21,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('/sample', function (Request $request) {
     return response()->json(['msg' => '成功']);
+});
+
+
+Route::prefix('/recruits')->group(function () {
+    Route::get('/', [RecruitApi::class, 'search']);
 });

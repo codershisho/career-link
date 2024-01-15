@@ -1,5 +1,5 @@
 import axios from "axios";
-import { ApiResponse } from "../types/RecruitTypes";
+import { ApiResponse } from "@/types/recruitTypes";
 
 const RecruitApiService = {
   searchRecruits: async (): ApiResponse => {

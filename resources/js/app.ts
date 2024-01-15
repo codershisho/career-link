@@ -8,6 +8,9 @@ import router from "./router";
 import { createVuetify } from "vuetify";
 import "@mdi/font/css/materialdesignicons.css";
 import "vuetify/dist/vuetify.min.css";
+// pinia
+import { createPinia } from "pinia";
+const pinia = createPinia();
 /// theme
 import { customLight, customDark } from "./theme";
 const vuetify = createVuetify({
@@ -24,12 +27,13 @@ const vuetify = createVuetify({
 import AxiosPlugin from "./plugins/axios";
 
 // components
-import abutton from "../components/ui/button.vue";
+import abutton from "@/components/ui/button.vue";
 
 const app = createApp(App);
 
 app.use(vuetify);
 app.use(router);
 app.use(AxiosPlugin);
+app.use(pinia);
 app.component("o-btn", abutton);
 app.mount("#app");

@@ -18,17 +18,8 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
-import { default as service } from "../services/recruit";
-import { Recruit } from "../types/RecruitTypes";
-import displayCard from "../../components/recruits/displayCard.vue";
-import displayList from "../../components/recruits/displayList.vue";
+import displayCard from "@/components/recruits/displayCard.vue";
+import displayList from "@/components/recruits/displayList.vue";
 
-const recruits = ref<Recruit[]>();
 const toggle = ref("card");
-search();
-
-async function search() {
-  const res = await service.searchRecruits();
-  recruits.value = res.data;
-}
 </script>

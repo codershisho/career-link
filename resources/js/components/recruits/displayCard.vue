@@ -22,7 +22,19 @@
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { ref, onMounted } from "vue";
+import { useRecruitStore } from "@/stores/recruitStore";
+import { Recruit } from "@/types/recruitTypes";
+
+const recruits = ref<Recruit[]>();
+const store = useRecruitStore();
+
+onMounted(async () => {
+  await store.search();
+  recruits.value = store.recruits;
+});
+</script>
 <style scoped>
 .flex-basis-30 {
   flex-basis: 23%; /* 列の幅を調整 */

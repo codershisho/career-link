@@ -15,7 +15,7 @@ const axiosPlugin = {
     // response
     axios.interceptors.response.use(
       (response: any) => {
-        return response;
+        return response.data;
       },
       (error: any) => {
         if (error.response) {

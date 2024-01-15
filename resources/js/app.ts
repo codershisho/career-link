@@ -23,9 +23,13 @@ const vuetify = createVuetify({
 // plugins
 import AxiosPlugin from "./plugins/axios";
 
+// components
+import abutton from "../components/ui/button.vue";
+
 const app = createApp(App);
 
 app.use(vuetify);
 app.use(router);
 app.use(AxiosPlugin);
+app.component("o-btn", abutton);
 app.mount("#app");

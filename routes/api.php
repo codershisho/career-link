@@ -26,4 +26,5 @@ Route::get('/sample', function (Request $request) {
 
 Route::prefix('/recruits')->group(function () {
     Route::get('/', [RecruitApi::class, 'search']);
+    Route::get('/{id}', [RecruitApi::class, 'show']);
 });

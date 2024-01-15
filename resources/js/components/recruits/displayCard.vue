@@ -14,9 +14,10 @@
           </span>
         </div>
       </div>
-      <div class="recruit-bottom">
-        <o-btn color="primary" variant="flat">詳細</o-btn>
-        <o-btn color="primary">キャンセル</o-btn>
+      <div class="recruit-bottom text-center">
+        <o-btn color="primary" variant="flat" @click="gotoDetail(recruit.id)"
+          >詳細</o-btn
+        >
       </div>
     </v-card>
   </div>
@@ -26,21 +27,28 @@
 import { ref, onMounted } from "vue";
 import { useRecruitStore } from "@/stores/recruitStore";
 import { Recruit } from "@/types/recruitTypes";
+import { useRouter } from "vue-router";
 
 const recruits = ref<Recruit[]>();
 const store = useRecruitStore();
+const router = useRouter();
 
 onMounted(async () => {
   await store.search();
   recruits.value = store.recruits;
 });
+
+const gotoDetail = (id: number) => {
+  router.push({ name: "recruit", params: { id: id } });
+};
 </script>
+
 <style scoped>
 .flex-basis-30 {
   flex-basis: 23%; /* 列の幅を調整 */
 }
 .recruit-bottom > button {
-  width: 45%;
+  width: 50%;
   margin: 0 4px;
 }
 </style>

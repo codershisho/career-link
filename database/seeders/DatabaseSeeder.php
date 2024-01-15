@@ -6,6 +6,7 @@ namespace Database\Seeders;
 
 use App\Models\Recruit;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Schema;
 
 class DatabaseSeeder extends Seeder
 {
@@ -14,6 +15,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        Schema::disableForeignKeyConstraints();
+
         Recruit::factory()->count(10)->create();
+
+        // マスタデータ
+        $this->call(PhasesTableSeeder::class);
+
+        Schema::enableForeignKeyConstraints();
     }
 }

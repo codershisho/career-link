@@ -7,3 +7,8 @@ export type Schedule = {
   end_datetime: string | null;
   description: string | null;
 };
+
+export type Phase = {
+  id: number;
+  name: string;
+};

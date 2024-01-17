@@ -32,3 +32,9 @@
 .w-80 {
     width: 80%;
 }
+.f-lg {
+    font-size: large;
+}
+.f-xl {
+    font-size: x-large;
+}

@@ -6,7 +6,9 @@ export const customLight = {
     accent: "#1BBC9C",
     back: "#F7F4FD",
     textmain: "#8E8E8E",
+    textsub: "#585858",
     tabbg: "#AAAAAA",
+    constract: "#FFFFFF",
   },
 };
 

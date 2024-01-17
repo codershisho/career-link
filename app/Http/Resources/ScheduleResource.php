@@ -4,6 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Carbon;
 
 class ScheduleResource extends JsonResource
 {
@@ -19,8 +20,8 @@ class ScheduleResource extends JsonResource
             'phase_name' => $this->name,
             'schedule_id' => $this->schedule ? $this->schedule->id : null,
             'recruit_id' => $this->schedule ? $this->schedule->recruit_id : null,
-            'start_datetime' => $this->schedule ? $this->schedule->start_datetime : null,
-            'end_datetime' => $this->schedule ? $this->schedule->end_datetime : null,
+            'start_datetime' => $this->schedule ? Carbon::parse($this->schedule->start_datetime)->format('Y-m-d H:i') : null,
+            'end_datetime' => $this->schedule ? Carbon::parse($this->schedule->end_datetime)->format('Y-m-d H:i') : null,
             'description' => $this->schedule ? $this->schedule->description : null,
         ];
     }

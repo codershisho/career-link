@@ -1,5 +1,5 @@
 <template>
-  <v-card class="pa-4">
+  <v-card flat class="pa-4">
     <div class="d-flex justify-end">
       <o-btn
         v-for="[type, name] in buttons"

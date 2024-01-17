@@ -27,6 +27,7 @@
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
 import { useRecruitStore } from "@/stores/recruitStore";
+import { useScheduleStore } from "@/stores/scheduleStore";
 import phase from "@/components/recruit/phase.vue";
 import info from "@/components/recruit/info.vue";
 import docs from "@/components/recruit/docs.vue";
@@ -35,9 +36,12 @@ import result from "@/components/recruit/result.vue";
 const props = defineProps({
   id: String,
 });
-const tabName = ref("infos");
+
 const store = useRecruitStore();
+const scheduleStore = useScheduleStore();
+const tabName = ref("infos");
 store.setRecruitId(Number(props.id));
+scheduleStore.setRecruitId(Number(props.id));
 
 const tabButtons = [
   ["基本情報", "infos", "mdi-information"],

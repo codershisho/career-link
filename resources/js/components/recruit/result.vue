@@ -1,5 +1,5 @@
 <template>
-  <v-card class="pa-4">
+  <v-card flat class="pa-4">
     <div class="offer text-textmain">
       <div class="title">選考状況</div>
       <div class="offer-row">

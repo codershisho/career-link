@@ -14,4 +14,9 @@ class Schedule extends Model
     protected $table = 't_schedules';
     protected $guarded = ['id'];
     protected $dates = ['start_datetime', 'end_datetime'];
+
+    public function phase()
+    {
+        return $this->belongsTo(Phase::class, 'phase_id', 'id');
+    }
 }

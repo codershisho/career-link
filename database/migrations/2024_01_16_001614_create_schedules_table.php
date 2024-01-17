@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('t_schedules', function (Blueprint $table) {
             $table->id()->comment('スケジュールID');
             $table->foreignId('recruit_id')->constrained('t_recruits');
+            $table->foreignId('phase_id')->constrained('m_phases');
             $table->dateTime('start_datetime')->nullable()->comment('開始日時');
             $table->dateTime('end_datetime')->nullable()->comment('終了日時');
             $table->text('description')->nullable()->comment('説明・メモ');

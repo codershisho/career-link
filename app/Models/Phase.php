@@ -13,4 +13,9 @@ class Phase extends Model
 
     protected $table = 'm_phases';
     protected $guarded = ['id'];
+
+    public function schedule()
+    {
+        return $this->belongsTo(Schedule::class, 'id', 'phase_id');
+    }
 }

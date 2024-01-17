@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\Api\PhaseApi;
 use App\Http\Controllers\Api\RecruitApi;
+use App\Http\Controllers\Api\ScheduleApi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -23,8 +25,18 @@ Route::get('/sample', function (Request $request) {
     return response()->json(['msg' => '成功']);
 });
 
+Route::prefix('/career-link')->group(function () {
+    Route::prefix('/recruits')->group(function () {
+        Route::get('/', [RecruitApi::class, 'search']);
+        Route::prefix('/{id}')->group(function () {
+            Route::get('/', [RecruitApi::class, 'show']);
 
-Route::prefix('/recruits')->group(function () {
-    Route::get('/', [RecruitApi::class, 'search']);
-    Route::get('/{id}', [RecruitApi::class, 'show']);
+            Route::get('/schedules', [ScheduleApi::class, 'search']);
+            Route::post('/schedules', [ScheduleApi::class, 'store']);
+        });
+    });
+    Route::prefix('/phases')->group(function () {
+        Route::get('/', [PhaseApi::class, 'index']);
+        Route::get('/{id}', [PhaseApi::class, 'show']);
+    });
 });

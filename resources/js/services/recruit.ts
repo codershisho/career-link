@@ -3,10 +3,10 @@ import { ApiResponse } from "@/types/recruitTypes";
 
 const RecruitApiService = {
   searchRecruits: async () => {
-    return await axios.get("/api/recruits");
+    return await axios.get("/api/career-link/recruits");
   },
   showRecruit: async (id: number) => {
-    return await axios.get("/api/recruits/" + id);
+    return await axios.get("/api/career-link/recruits/" + id);
   },
 };
 

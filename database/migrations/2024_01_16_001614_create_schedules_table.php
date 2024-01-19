@@ -28,6 +28,11 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::table('t_schedules', function (Blueprint $table) {
+            //
+            $table->dropForeign('t_schedules_recruit_id_foreign');
+            $table->dropForeign('t_schedules_phase_id_foreign');
+        });
         Schema::dropIfExists('t_schedules');
     }
 };

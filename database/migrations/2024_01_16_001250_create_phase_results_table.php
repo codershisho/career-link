@@ -16,9 +16,6 @@ return new class extends Migration
             $table->foreignId('recruit_id')->constrained('t_recruits');
             $table->foreignId('phase_id')->constrained('m_phases');
             $table->integer('result_flg')->nullable()->comment('結果フラグ');
-            // $table->foreignId('user_id')->constrained('users');
-            // $table->foreignId('assessment_id')->constrained('m_assessments');
-            // $table->text('comments')->nullable()->comment('コメント'); // コメントや備考
             $table->timestamps();
             $table->softDeletes();
         });
@@ -29,6 +26,11 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::table('t_phase_results', function (Blueprint $table) {
+            //
+            $table->dropForeign('t_phase_results_recruit_id_foreign');
+            $table->dropForeign('t_phase_results_phase_id_foreign');
+        });
         Schema::dropIfExists('t_phase_results');
     }
 };

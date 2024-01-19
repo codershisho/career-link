@@ -26,6 +26,12 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::table('t_phase_users', function (Blueprint $table) {
+            //
+            $table->dropForeign('t_phase_users_recruit_id_foreign');
+            $table->dropForeign('t_phase_users_phase_id_foreign');
+            $table->dropForeign('t_phase_users_user_id_foreign');
+        });
         Schema::dropIfExists('t_phase_users');
     }
 };

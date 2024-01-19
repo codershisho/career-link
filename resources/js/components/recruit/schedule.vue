@@ -25,14 +25,9 @@
               density="compact"
               hide-details="auto"
               variant="outlined"
-              :items="[
-                'California',
-                'Colorado',
-                'Florida',
-                'Georgia',
-                'Texas',
-                'Wyoming',
-              ]"
+              :items="store.users"
+              item-title="name"
+              item-value="id"
             ></v-autocomplete>
           </div>
         </div>

@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\Api\AssessmentApi;
 use App\Http\Controllers\Api\PhaseApi;
 use App\Http\Controllers\Api\RecruitApi;
 use App\Http\Controllers\Api\ScheduleApi;
+use App\Http\Controllers\Api\UserApi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -35,8 +37,18 @@ Route::prefix('/career-link')->group(function () {
             Route::post('/schedules', [ScheduleApi::class, 'store']);
         });
     });
-    Route::prefix('/phases')->group(function () {
-        Route::get('/', [PhaseApi::class, 'index']);
-        Route::get('/{id}', [PhaseApi::class, 'show']);
+    Route::prefix('/ms')->group(function () {
+        Route::prefix('/phases')->group(function () {
+            Route::get('/', [PhaseApi::class, 'index']);
+            Route::get('/{id}', [PhaseApi::class, 'show']);
+        });
+        Route::prefix('/users')->group(function () {
+            Route::get('/', [UserApi::class, 'index']);
+            Route::get('/{id}', [UserApi::class, 'show']);
+        });
+        Route::prefix('/assessments')->group(function () {
+            Route::get('/', [AssessmentApi::class, 'index']);
+            Route::get('/{id}', [AssessmentApi::class, 'show']);
+        });
     });
 });

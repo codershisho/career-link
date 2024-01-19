@@ -23,13 +23,26 @@ const vuetify = createVuetify({
   },
 });
 
+// libs
+import VueDatePicker from "@vuepic/vue-datepicker";
+import "@vuepic/vue-datepicker/dist/main.css";
+
 // plugins
 import AxiosPlugin from "./plugins/axios";
 
 // components
 import abutton from "@/components/ui/button.vue";
+import buttonCancel from "@/components/ui/buttonCancel.vue";
+import buttonSave from "@/components/ui/buttonSave.vue";
 import atext from "@/components/ui/text.vue";
 import atextarea from "@/components/ui/textarea.vue";
+import adialog from "@/components/ui/dialog.vue";
+import aauto from "@/components/ui/auto.vue";
+
+// dialog forms
+import checkerForm from "@/components/recruit/checkerForm.vue";
+import meetingForm from "@/components/recruit/meetingForm.vue";
+import assessmentForm from "@/components/recruit/assessmentForm.vue";
 
 const app = createApp(App);
 
@@ -37,7 +50,17 @@ app.use(vuetify);
 app.use(router);
 app.use(AxiosPlugin);
 app.use(pinia);
+app.component("VueDatePicker", VueDatePicker);
 app.component("o-btn", abutton);
+app.component("save-btn", buttonSave);
+app.component("cancel-btn", buttonCancel);
 app.component("o-text", atext);
 app.component("o-area", atextarea);
+app.component("o-dialog", adialog);
+app.component("o-auto", aauto);
+// forms
+app.component("checkerForm", checkerForm);
+app.component("meetingForm", meetingForm);
+app.component("assessmentForm", assessmentForm);
+
 app.mount("#app");

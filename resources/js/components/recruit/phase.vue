@@ -66,6 +66,8 @@ const dialog = ref(false);
 onMounted(async () => {
   await scheduleStore.searchSchedulesPhase();
   await scheduleStore.searchPhase();
+  await scheduleStore.searchUsers();
+  await scheduleStore.searchAssessments();
 });
 </script>
 

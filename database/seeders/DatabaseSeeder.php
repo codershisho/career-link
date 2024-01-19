@@ -21,6 +21,8 @@ class DatabaseSeeder extends Seeder
 
         // マスタデータ
         $this->call(PhasesTableSeeder::class);
+        $this->call(UserSeeder::class);
+        $this->call(AssessmentSeeder::class);
 
         Schema::enableForeignKeyConstraints();
     }

@@ -8,7 +8,7 @@ export type Schedule = {
   description: string | null;
 };
 
-export type Phase = {
+export type Master = {
   id: number;
   name: string;
 };

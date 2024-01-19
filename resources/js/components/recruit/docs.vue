@@ -6,7 +6,7 @@
         class="mr-6"
         color="primary"
         variant="outlined"
-        rounded="lg"
+        rounded="1"
         prepend-icon="mdi-arrow-up-bold-circle-outline"
         @click="upload(Number(type))"
       >

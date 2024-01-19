@@ -2,13 +2,17 @@ import { ref } from "vue";
 import { defineStore } from "pinia";
 import { default as service } from "@/services/schedule";
 import { default as pservice } from "@/services/phase";
-import { Schedule, Phase } from "@/types/scheduleTypes";
+import { default as uservice } from "@/services/user";
+import { default as aservice } from "@/services/assessment";
+import { Schedule, Master } from "@/types/scheduleTypes";
 
 export const useScheduleStore = defineStore("schedule", () => {
   const recruitId = ref(0);
   const schedules = ref<Schedule[] | null>(null);
-  const phases = ref<Phase[] | null>(null);
-  const notYetPhase = ref<Phase[] | null>(null);
+  const phases = ref<Master[] | null>(null);
+  const notYetPhase = ref<Master[] | null>(null);
+  const users = ref<Master[] | null>(null);
+  const assessments = ref<Master[] | null>(null);
 
   const setRecruitId = (id: number) => {
     recruitId.value = id;
@@ -42,13 +46,27 @@ export const useScheduleStore = defineStore("schedule", () => {
     notYetPhase.value = notYetPhasesValues;
   };
 
+  const searchUsers = async () => {
+    const res = await uservice.index();
+    users.value = res.data;
+  };
+
+  const searchAssessments = async () => {
+    const res = await aservice.index();
+    assessments.value = res.data;
+  };
+
   return {
     recruitId,
     schedules,
     phases,
     notYetPhase,
+    users,
+    assessments,
     setRecruitId,
     searchSchedulesPhase,
     searchPhase,
+    searchUsers,
+    searchAssessments,
   };
 });

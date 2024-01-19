@@ -2,6 +2,7 @@
   <v-text-field
     v-bind="$attrs"
     v-model="value"
+    variant="outlined"
     density="compact"
     hide-details="auto"
   >

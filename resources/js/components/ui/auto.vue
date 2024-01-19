@@ -1,21 +1,15 @@
 <template>
-  <v-textarea
+  <v-autocomplete
     v-bind="$attrs"
-    v-model="value"
     density="compact"
     hide-details="auto"
     variant="outlined"
-    rows="5"
-  >
-  </v-textarea>
+    v-model="value"
+  ></v-autocomplete>
 </template>
 
 <script setup lang="ts">
 import { computed } from "vue";
-
-// defineOptions({
-//   inheritAttrs: false,
-// });
 
 const props = defineProps(["modelValue"]);
 const emit = defineEmits(["update:modelValue"]);
@@ -29,5 +23,3 @@ const value = computed({
   },
 });
 </script>
-
-<style scoped></style>

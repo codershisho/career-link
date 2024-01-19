@@ -8,7 +8,6 @@
         <v-chip
           v-for="[name, kbn, icon] in tabButtons"
           label
-          variant="flat"
           :prepend-icon="icon"
           @click="tabName = kbn"
         >

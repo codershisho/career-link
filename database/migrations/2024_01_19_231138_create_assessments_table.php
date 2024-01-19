@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('m_assessments', function (Blueprint $table) {
             $table->id()->comment('評価ID');
             $table->string('name')->comment('評価名');
+            $table->string('color_code')->comment('カラーコード');
             $table->timestamps();
             $table->softDeletes();
         });

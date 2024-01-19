@@ -18,4 +18,9 @@ class Phase extends Model
     {
         return $this->belongsTo(Schedule::class, 'id', 'phase_id');
     }
+
+    public function phase_users()
+    {
+        return $this->hasMany(PhaseUser::class, 'phase_id', 'id');
+    }
 }

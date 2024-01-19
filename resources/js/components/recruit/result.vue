@@ -1,28 +1,38 @@
 <template>
-  <v-card flat class="pa-4" v-if="store.schedules">
+  <v-card flat class="pa-4" v-if="store.resultPhaseUsers">
     <div>
-      <template v-for="(schedule, i) in store.schedules" :key="i">
+      <template v-for="(phase, i) in store.resultPhaseUsers" :key="i">
         <div class="d-flex align-center">
           <div class="mr-auto text-textmain f-lg">
-            {{ schedule.phase_name }}
+            {{ phase.phase_name }}
           </div>
           <div>
-            <o-btn
-              v-for="[name, icon, fn] in buttons"
+            <setting-btn
               class="mr-2"
-              color="primary"
-              variant="outlined"
-              rounded="1"
-              :prepend-icon="icon"
-              @click="fn"
+              prepend-icon="mdi-star"
+              @click="openAssessment(phase.phase_id)"
             >
-              {{ name }}
-            </o-btn>
+              評価設定
+            </setting-btn>
+            <setting-btn
+              class="mr-2"
+              prepend-icon="mdi-draw-pen"
+              @click="openChecker(phase.phase_id)"
+            >
+              選考担当者の設定
+            </setting-btn>
+            <setting-btn
+              class="mr-2"
+              prepend-icon="mdi-calendar-clock"
+              @click="openMeeting(phase.phase_id)"
+            >
+              面談・面接日の設定
+            </setting-btn>
           </div>
         </div>
         <div class="pt-3">
-          <v-table>
-            <thead class="bg-blue-grey-lighten-5">
+          <v-table v-if="phase.phase_users">
+            <thead class="bg-blue-grey-lighten-5 text-textmain">
               <tr>
                 <th class="text-left w-20">評価者</th>
                 <th class="text-left w-10">評価</th>
@@ -30,14 +40,19 @@
               </tr>
             </thead>
             <tbody>
-              <tr v-for="item in assessments" :key="item.id">
-                <td>{{ item.user_name }}</td>
+              <tr v-for="(user, j) in phase.phase_users" :key="j">
+                <td>{{ user.user_name }}</td>
                 <td>
-                  <v-chip label color="yellow-darken-4">{{
-                    item.assessment_name
-                  }}</v-chip>
+                  <v-chip
+                    v-if="user.assessment_id"
+                    label
+                    :color="user.assessment_color"
+                  >
+                    {{ user.assessment_name }}
+                  </v-chip>
+                  <v-chip v-else label color="grey-darken-3"> 未実施 </v-chip>
                 </td>
-                <td>{{ item.comment }}</td>
+                <td>{{ user.comment }}</td>
               </tr>
             </tbody>
           </v-table>
@@ -63,43 +78,24 @@ import adialog from "@/components/ui/dialog.vue";
 
 const store = useScheduleStore();
 
-const buttons = [
-  ["評価設定", "mdi-star", () => openAssessment()],
-  ["選考担当者の設定", "mdi-draw-pen", () => openChecker()],
-  ["面談・面接日の設定", "mdi-calendar-clock", () => openMeeting()],
-];
 const dialog = ref<InstanceType<typeof adialog> | null>(null);
 const dialogTitle = ref("");
 const form = ref("");
 
-const assessments = ref([
-  {
-    id: 0,
-    user_name: "AAA",
-    assessment_id: 1,
-    assessment_name: "S評価",
-    comment: "asc",
-  },
-  {
-    id: 1,
-    user_name: "BBB",
-    assessment_id: 2,
-    assessment_name: "A評価",
-    comment: "axxv",
-  },
-]);
-
-function openAssessment() {
+function openAssessment(phaseId: number) {
+  store.setPhaseId(phaseId);
   dialogTitle.value = "評価設定";
   form.value = "assessmentForm";
   open();
 }
-function openChecker() {
+function openChecker(phaseId: number) {
+  store.setPhaseId(phaseId);
   dialogTitle.value = "選考担当者の設定";
   form.value = "checkerForm";
   open();
 }
-function openMeeting() {
+function openMeeting(phaseId: number) {
+  store.setPhaseId(phaseId);
   dialogTitle.value = "面談・面接日の設定";
   form.value = "meetingForm";
   open();

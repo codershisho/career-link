@@ -68,6 +68,7 @@ onMounted(async () => {
   await scheduleStore.searchPhase();
   await scheduleStore.searchUsers();
   await scheduleStore.searchAssessments();
+  await scheduleStore.searchResultPhaseUsers();
 });
 </script>
 

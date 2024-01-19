@@ -11,14 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('t_phase_results', function (Blueprint $table) {
-            $table->id()->comment('結果ID');
+        Schema::create('t_phase_users', function (Blueprint $table) {
+            $table->id()->comment('応募者のフェーズ毎の担当者ID');
             $table->foreignId('recruit_id')->constrained('t_recruits');
             $table->foreignId('phase_id')->constrained('m_phases');
-            $table->integer('result_flg')->nullable()->comment('結果フラグ');
-            // $table->foreignId('user_id')->constrained('users');
-            // $table->foreignId('assessment_id')->constrained('m_assessments');
-            // $table->text('comments')->nullable()->comment('コメント'); // コメントや備考
+            $table->foreignId('user_id')->constrained('users');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -29,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('t_phase_results');
+        Schema::dropIfExists('t_phase_users');
     }
 };

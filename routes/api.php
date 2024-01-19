@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\AssessmentApi;
 use App\Http\Controllers\Api\PhaseApi;
 use App\Http\Controllers\Api\RecruitApi;
+use App\Http\Controllers\Api\ResultApi;
 use App\Http\Controllers\Api\ScheduleApi;
 use App\Http\Controllers\Api\UserApi;
 use Illuminate\Http\Request;
@@ -30,11 +31,19 @@ Route::get('/sample', function (Request $request) {
 Route::prefix('/career-link')->group(function () {
     Route::prefix('/recruits')->group(function () {
         Route::get('/', [RecruitApi::class, 'search']);
+        // 応募者毎
         Route::prefix('/{id}')->group(function () {
             Route::get('/', [RecruitApi::class, 'show']);
-
-            Route::get('/schedules', [ScheduleApi::class, 'search']);
-            Route::post('/schedules', [ScheduleApi::class, 'store']);
+            // スケジュール情報
+            Route::prefix('/schedules')->group(function () {
+                Route::get('/', [ScheduleApi::class, 'search']);
+                Route::post('/', [ScheduleApi::class, 'store']);
+            });
+            // 結果情報
+            Route::prefix('/results')->group(function () {
+                Route::get('/', [ResultApi::class, 'search']);
+                Route::post('/users', [ResultApi::class, 'storeUsers']);
+            });
         });
     });
     Route::prefix('/ms')->group(function () {

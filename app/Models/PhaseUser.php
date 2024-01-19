@@ -6,17 +6,17 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class PhaseResult extends Model
+class PhaseUser extends Model
 {
     use HasFactory;
     use SoftDeletes;
 
-    protected $table = 't_phase_results';
+    protected $table = 't_phase_users';
     protected $guarded = ['id'];
 
-    public function phase()
+    public function recruit()
     {
-        return $this->belongsTo(Phase::class, 'phase_id', 'id');
+        return $this->belongsTo(Recruit::class, 'recruit_id', 'id');
     }
 
     public function user()
@@ -24,8 +24,8 @@ class PhaseResult extends Model
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
-    public function assessment()
+    public function result()
     {
-        return $this->belongsTo(Assessment::class, 'assessment_id', 'id');
+        return $this->belongsTo(PhaseUserResult::class, 'id', 'user_id');
     }
 }

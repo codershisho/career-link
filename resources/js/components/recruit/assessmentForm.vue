@@ -10,6 +10,16 @@
     </o-auto>
   </div>
   <div class="d-flex align-center py-4">
+    <div class="text-textmain w-30">理由</div>
+    <o-auto
+      v-if="store.assessments"
+      :items="store.assessments"
+      item-title="name"
+      item-value="id"
+    >
+    </o-auto>
+  </div>
+  <div class="d-flex align-center py-4">
     <div class="text-textmain w-30">コメント</div>
     <o-area placeholder="評価に関してコメント"> </o-area>
   </div>

@@ -20,6 +20,28 @@
             </o-btn>
           </div>
         </div>
+        <div class="pt-3">
+          <v-table>
+            <thead class="bg-blue-grey-lighten-5">
+              <tr>
+                <th class="text-left w-20">評価者</th>
+                <th class="text-left w-10">評価</th>
+                <th class="text-left">コメント</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="item in assessments" :key="item.id">
+                <td>{{ item.user_name }}</td>
+                <td>
+                  <v-chip label color="yellow-darken-4">{{
+                    item.assessment_name
+                  }}</v-chip>
+                </td>
+                <td>{{ item.comment }}</td>
+              </tr>
+            </tbody>
+          </v-table>
+        </div>
         <v-divider></v-divider>
       </template>
     </div>
@@ -49,6 +71,23 @@ const buttons = [
 const dialog = ref<InstanceType<typeof adialog> | null>(null);
 const dialogTitle = ref("");
 const form = ref("");
+
+const assessments = ref([
+  {
+    id: 0,
+    user_name: "AAA",
+    assessment_id: 1,
+    assessment_name: "S評価",
+    comment: "asc",
+  },
+  {
+    id: 1,
+    user_name: "BBB",
+    assessment_id: 2,
+    assessment_name: "A評価",
+    comment: "axxv",
+  },
+]);
 
 function openAssessment() {
   dialogTitle.value = "評価設定";

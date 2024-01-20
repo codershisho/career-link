@@ -44,6 +44,7 @@ import aauto from "@/components/ui/auto.vue";
 import checkerForm from "@/components/recruit/checkerForm.vue";
 import meetingForm from "@/components/recruit/meetingForm.vue";
 import assessmentForm from "@/components/recruit/assessmentForm.vue";
+import assessmentPhase from "@/components/recruit/assessmentPhase.vue";
 
 const app = createApp(App);
 
@@ -64,5 +65,6 @@ app.component("o-auto", aauto);
 app.component("checkerForm", checkerForm);
 app.component("meetingForm", meetingForm);
 app.component("assessmentForm", assessmentForm);
+app.component("assessmentPhase", assessmentPhase);
 
 app.mount("#app");

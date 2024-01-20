@@ -44,6 +44,8 @@ Route::prefix('/career-link')->group(function () {
                 Route::get('/', [ResultApi::class, 'search']);
                 Route::post('/users', [ResultApi::class, 'storeUsers']);
                 Route::post('/users/result', [ResultApi::class, 'storeResultPhaseUser']);
+                Route::get('/phases', [ResultApi::class, 'searchPhaseResults']);
+                Route::post('/phases', [ResultApi::class, 'storePhaseResult']);
             });
         });
     });

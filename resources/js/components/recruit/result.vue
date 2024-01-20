@@ -7,8 +7,12 @@
             {{ phase.phase_name }}
           </div>
           <div>
-            <setting-btn class="mr-2" prepend-icon="mdi-star">
-              評価設定
+            <setting-btn
+              class="mr-2"
+              prepend-icon="mdi-star"
+              @click="openAssessmentPhase(phase.phase_id)"
+            >
+              フェーズ評価
             </setting-btn>
             <setting-btn
               class="mr-2"
@@ -38,7 +42,7 @@
             </thead>
             <tbody>
               <tr v-for="(user, j) in phase.phase_users" :key="j">
-                <td>{{ user.user_name }}</td>
+                <td class="text-textmain">{{ user.user_name }}</td>
                 <td>
                   <v-chip
                     v-if="user.assessment_id"
@@ -49,7 +53,17 @@
                   </v-chip>
                   <v-chip v-else label color="grey-darken-3"> 未実施 </v-chip>
                 </td>
-                <td>{{ user.comment }}</td>
+                <td>
+                  <div
+                    style="
+                      word-break: break-all;
+                      overflow-wrap: break-word;
+                      white-space: break-spaces;
+                    "
+                  >
+                    {{ user.comment }}
+                  </div>
+                </td>
                 <td class="text-right">
                   <o-btn
                     variant="text"
@@ -88,6 +102,15 @@ const store = useScheduleStore();
 const dialog = ref<InstanceType<typeof adialog> | null>(null);
 const dialogTitle = ref("");
 const form = ref("");
+
+function openAssessmentPhase(v: number) {
+  console.log("open");
+
+  store.setPhaseId(v);
+  dialogTitle.value = "フェーズ評価";
+  form.value = "assessmentPhase";
+  open();
+}
 
 function openAssessment(v: PhaseUser) {
   store.setPhaseUser(v);

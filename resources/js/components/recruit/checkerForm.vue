@@ -38,6 +38,8 @@ const close = () => {
 /** 選考担当者の登録 */
 async function storePhaseUsers() {
   service.storePhaseUser(store.recruitId, store.selectedPhaseId, users.value);
+  store.searchResultPhaseUsers();
+  close();
 }
 </script>
 

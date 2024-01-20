@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Services\Result\SearchService;
+use App\Services\Result\StorePhaseResultService;
 use App\Services\Result\StorePhaseUserService;
 use App\Services\Result\UpdatePhaseUserService;
 use Illuminate\Http\Request;
@@ -48,6 +49,32 @@ class ResultApi extends AbstractApi
         Logger($id);
         Logger($request->all());
 
+        $service->store($id, $request->all());
+        return response()->json(['message' => '評価者の登録完了']);
+    }
+
+    /**
+     * 応募者のフェーズ毎の結果を検索
+     *
+     * @param [type] $id
+     * @param SearchService $service
+     * @return void
+     */
+    public function searchPhaseResults($id, SearchService $service)
+    {
+        $data = $service->searchPhaseResults($id);
+        return $this->setResponse($data);
+    }
+
+    /**
+     * 応募者のフェーズ毎の結果を登録
+     *
+     * @param [type] $id
+     * @param [type] $service
+     * @return void
+     */
+    public function storePhaseResult($id, Request $request, StorePhaseResultService $service)
+    {
         $service->store($id, $request->all());
         return response()->json(['message' => '評価者の登録完了']);
     }

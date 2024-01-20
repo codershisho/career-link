@@ -11,6 +11,7 @@ import {
   MasterAssessment,
   ResultPhaseUser,
   PhaseUser,
+  PhaseResult,
 } from "@/types/scheduleTypes";
 
 export const useScheduleStore = defineStore("schedule", () => {
@@ -23,6 +24,7 @@ export const useScheduleStore = defineStore("schedule", () => {
   const resultPhaseUsers = ref<ResultPhaseUser[] | null>(null);
   const selectedPhaseId = ref(0);
   const selectedPhaseUser = ref<PhaseUser | null>(null);
+  const phaseResults = ref<PhaseResult[] | null>(null);
 
   const setRecruitId = (id: number) => {
     recruitId.value = id;
@@ -91,6 +93,19 @@ export const useScheduleStore = defineStore("schedule", () => {
     );
   };
 
+  /** 各フェーズの結果を検索 */
+  const searchPhaseResults = async () => {
+    const res = await rservice.searchPhaseResults(recruitId.value);
+    phaseResults.value = res.data;
+  };
+
+  /** 各フェーズの結果を登録 */
+  const storePhaseResult = async () => {
+    const index = selectedPhaseId.value;
+    const body = phaseResults.value[index - 1];
+    await rservice.storePhaseResult(recruitId.value, body);
+  };
+
   return {
     recruitId,
     schedules,
@@ -101,6 +116,7 @@ export const useScheduleStore = defineStore("schedule", () => {
     resultPhaseUsers,
     selectedPhaseId,
     selectedPhaseUser,
+    phaseResults,
     setRecruitId,
     setPhaseId,
     setPhaseUser,
@@ -110,5 +126,7 @@ export const useScheduleStore = defineStore("schedule", () => {
     searchAssessments,
     searchResultPhaseUsers,
     storeResultPhaseUser,
+    searchPhaseResults,
+    storePhaseResult,
   };
 });

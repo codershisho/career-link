@@ -2,6 +2,7 @@
 
 namespace App\Services\Result;
 
+use App\Http\Resources\PhaseResultResource;
 use App\Http\Resources\ResultPhaseUserResource;
 use App\Models\Phase;
 use App\Models\PhaseResult;
@@ -29,5 +30,25 @@ class SearchService
 
         return ResultPhaseUserResource::collection($data);
         // return $data;
+    }
+
+    /**
+     * 応募者のフェーズ毎の結果を検索
+     *
+     * @param [type] $recruitId
+     * @return void
+     */
+    public function searchPhaseResults($recruitId)
+    {
+        $query = Phase::query();
+        $query = $query->with([
+            'phase_result' => function ($q) use ($recruitId) {
+                $q->where('recruit_id', $recruitId);
+            }
+        ]);
+        $data = $query->get();
+
+        // return $data;
+        return PhaseResultResource::collection($data);
     }
 }

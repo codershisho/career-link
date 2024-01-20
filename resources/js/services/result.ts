@@ -33,6 +33,19 @@ const ResultService = {
       body
     );
   },
+
+  /**
+   * 各フェーズの結果を検索
+   * @param id
+   */
+  searchPhaseResults: async (id: number) => {
+    return await axios.get(`/api/career-link/recruits/${id}/results/phases`);
+  },
+
+  /** 各フェーズの結果を登録 */
+  storePhaseResult: async (id: number, body: any) => {
+    await axios.post(`/api/career-link/recruits/${id}/results/phases`, body);
+  },
 };
 
 export default ResultService;

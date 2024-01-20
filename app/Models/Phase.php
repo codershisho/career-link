@@ -23,4 +23,9 @@ class Phase extends Model
     {
         return $this->hasMany(PhaseUser::class, 'phase_id', 'id');
     }
+
+    public function phase_result()
+    {
+        return $this->hasOne(PhaseResult::class, 'phase_id', 'id');
+    }
 }

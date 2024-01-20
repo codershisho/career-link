@@ -49,7 +49,9 @@ const close = () => {
 };
 
 const save = async () => {
-  store.storeResultPhaseUser();
+  await store.storeResultPhaseUser();
+  await store.searchResultPhaseUsers();
+  close();
 };
 </script>
 

@@ -34,3 +34,13 @@ export type PhaseUser = {
   assessment_color: string;
   comment: string | null;
 };
+
+export type PhaseResult = {
+  phase_id: number;
+  phase_name: string;
+  phase_result_id: number | null;
+  assessment_id: number | null;
+  result_flg: boolean | null;
+  review_comment: string | null;
+  memo: string | null;
+};

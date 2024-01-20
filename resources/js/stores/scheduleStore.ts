@@ -10,6 +10,7 @@ import {
   Master,
   MasterAssessment,
   ResultPhaseUser,
+  PhaseUser,
 } from "@/types/scheduleTypes";
 
 export const useScheduleStore = defineStore("schedule", () => {
@@ -21,6 +22,7 @@ export const useScheduleStore = defineStore("schedule", () => {
   const assessments = ref<MasterAssessment[] | null>(null);
   const resultPhaseUsers = ref<ResultPhaseUser[] | null>(null);
   const selectedPhaseId = ref(0);
+  const selectedPhaseUser = ref<PhaseUser | null>(null);
 
   const setRecruitId = (id: number) => {
     recruitId.value = id;
@@ -29,6 +31,10 @@ export const useScheduleStore = defineStore("schedule", () => {
   /** 選考結果タブで選択されたフェーズの情報保持 */
   const setPhaseId = (phaseId: number) => {
     selectedPhaseId.value = phaseId;
+  };
+
+  const setPhaseUser = (v: PhaseUser) => {
+    selectedPhaseUser.value = v;
   };
 
   const searchSchedulesPhase = async () => {
@@ -77,6 +83,14 @@ export const useScheduleStore = defineStore("schedule", () => {
     resultPhaseUsers.value = res.data;
   };
 
+  /** 各フェーズの選考担当者の評価登録 */
+  const storeResultPhaseUser = async () => {
+    const res = await rservice.storeResultPhaseUser(
+      recruitId.value,
+      selectedPhaseUser.value
+    );
+  };
+
   return {
     recruitId,
     schedules,
@@ -86,12 +100,15 @@ export const useScheduleStore = defineStore("schedule", () => {
     assessments,
     resultPhaseUsers,
     selectedPhaseId,
+    selectedPhaseUser,
     setRecruitId,
     setPhaseId,
+    setPhaseUser,
     searchSchedulesPhase,
     searchPhase,
     searchUsers,
     searchAssessments,
     searchResultPhaseUsers,
+    storeResultPhaseUser,
   };
 });

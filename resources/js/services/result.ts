@@ -14,16 +14,24 @@ const ResultService = {
    * @param id 応募者ID
    * @param ids 選考担当者userID
    */
-  storeResultPhaseUser: async (
-    id: number,
-    phaseId: number,
-    ids: number[] = []
-  ) => {
+  storePhaseUser: async (id: number, phaseId: number, ids: number[] = []) => {
     const body = {
       phase_id: phaseId,
       ids: ids,
     };
     await axios.post(`/api/career-link/recruits/${id}/results/users`, body);
+  },
+
+  /**
+   * 各フェーズの選考担当者の評価登録
+   * @param id
+   * @param body
+   */
+  storeResultPhaseUser: async (id: number, body: any) => {
+    await axios.post(
+      `/api/career-link/recruits/${id}/results/users/result`,
+      body
+    );
   },
 };
 

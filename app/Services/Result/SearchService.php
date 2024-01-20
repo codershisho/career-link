@@ -22,11 +22,12 @@ class SearchService
                 $q->where('recruit_id', $id);
             },
             'phase_users.user',
-            'phase_users.result.assessment'
+            'phase_users.assessment'
         ]);
 
         $data = $query->get();
 
         return ResultPhaseUserResource::collection($data);
+        // return $data;
     }
 }

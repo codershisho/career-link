@@ -7,11 +7,7 @@
             {{ phase.phase_name }}
           </div>
           <div>
-            <setting-btn
-              class="mr-2"
-              prepend-icon="mdi-star"
-              @click="openAssessment(phase.phase_id)"
-            >
+            <setting-btn class="mr-2" prepend-icon="mdi-star">
               評価設定
             </setting-btn>
             <setting-btn
@@ -37,6 +33,7 @@
                 <th class="text-left w-20">評価者</th>
                 <th class="text-left w-10">評価</th>
                 <th class="text-left">コメント</th>
+                <th class="text-right">評価登録</th>
               </tr>
             </thead>
             <tbody>
@@ -53,6 +50,15 @@
                   <v-chip v-else label color="grey-darken-3"> 未実施 </v-chip>
                 </td>
                 <td>{{ user.comment }}</td>
+                <td class="text-right">
+                  <o-btn
+                    variant="text"
+                    class="text-info"
+                    @click="openAssessment(user)"
+                  >
+                    評価登録
+                  </o-btn>
+                </td>
               </tr>
             </tbody>
           </v-table>
@@ -74,6 +80,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { useScheduleStore } from "@/stores/scheduleStore";
+import { PhaseUser } from "@/types/scheduleTypes";
 import adialog from "@/components/ui/dialog.vue";
 
 const store = useScheduleStore();
@@ -82,8 +89,8 @@ const dialog = ref<InstanceType<typeof adialog> | null>(null);
 const dialogTitle = ref("");
 const form = ref("");
 
-function openAssessment(phaseId: number) {
-  store.setPhaseId(phaseId);
+function openAssessment(v: PhaseUser) {
+  store.setPhaseUser(v);
   dialogTitle.value = "評価設定";
   form.value = "assessmentForm";
   open();

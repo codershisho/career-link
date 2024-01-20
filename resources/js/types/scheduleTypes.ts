@@ -26,6 +26,7 @@ export type ResultPhaseUser = {
 };
 
 export type PhaseUser = {
+  phase_user_id: number;
   user_id: number;
   user_name: string;
   assessment_id: number;

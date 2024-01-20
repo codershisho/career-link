@@ -31,12 +31,13 @@ class ResultPhaseUserResource extends JsonResource
 
         return $users->map(function ($user) {
             return [
+                'phase_user_id' => $user->id,
                 'user_id' => $user->user->id,
                 'user_name' => $user->user->name,
-                'assessment_id' => $user->result ? $user->result->assessment_id : null,
-                'assessment_name' => $user->result ? $user->result->assessment->name : null,
-                'assessment_color' => $user->result ? $user->result->assessment->color_code : null,
-                'comment' => $user->result ? $user->result->comments : null,
+                'assessment_id' => $user->assessment->id,
+                'assessment_name' => $user->assessment->name,
+                'assessment_color' => $user->assessment->color_code,
+                'comment' => $user->comments,
             ];
         })->values()->toArray();
     }

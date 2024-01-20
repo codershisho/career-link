@@ -24,8 +24,13 @@ class PhaseUser extends Model
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
-    public function result()
+    public function assessment()
     {
-        return $this->belongsTo(PhaseUserResult::class, 'id', 'phase_user_id');
+        return $this->belongsTo(Assessment::class, 'assessment_id', 'id');
     }
+
+    // public function result()
+    // {
+    //     return $this->belongsTo(PhaseUserResult::class, 'id', 'phase_user_id');
+    // }
 }

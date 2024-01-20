@@ -43,6 +43,7 @@ Route::prefix('/career-link')->group(function () {
             Route::prefix('/results')->group(function () {
                 Route::get('/', [ResultApi::class, 'search']);
                 Route::post('/users', [ResultApi::class, 'storeUsers']);
+                Route::post('/users/result', [ResultApi::class, 'storeResultPhaseUser']);
             });
         });
     });

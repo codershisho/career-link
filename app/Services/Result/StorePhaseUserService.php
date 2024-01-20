@@ -2,9 +2,6 @@
 
 namespace App\Services\Result;
 
-use App\Http\Resources\ResultPhaseUserResource;
-use App\Models\Phase;
-use App\Models\PhaseResult;
 use App\Models\PhaseUser;
 
 class StorePhaseUserService
@@ -36,6 +33,7 @@ class StorePhaseUserService
                     'recruit_id' => $recruitId,
                     'phase_id' => $phaseId,
                     'user_id' => $userId,
+                    'assessment_id' => 1,
                 ]);
             }
         });

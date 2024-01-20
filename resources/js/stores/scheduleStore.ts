@@ -39,9 +39,17 @@ export const useScheduleStore = defineStore("schedule", () => {
     selectedPhaseUser.value = v;
   };
 
+  /** 各フェーズの日程検索 */
   const searchSchedulesPhase = async () => {
     const res = await service.searchSchedulesPhase(recruitId.value);
     schedules.value = res.data;
+  };
+
+  /** フェーズの日程登録 */
+  const storeSchedulePhase = async () => {
+    const index = selectedPhaseId.value;
+    const body = schedules.value[index - 1];
+    await service.storeSchedulePhase(recruitId.value, body);
   };
 
   const searchPhase = async () => {
@@ -121,6 +129,7 @@ export const useScheduleStore = defineStore("schedule", () => {
     setPhaseId,
     setPhaseUser,
     searchSchedulesPhase,
+    storeSchedulePhase,
     searchPhase,
     searchUsers,
     searchAssessments,

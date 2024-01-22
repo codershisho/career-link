@@ -1,29 +1,54 @@
 <template>
   <v-card flat class="pa-4">
-    <div class="d-flex justify-end">
-      <o-btn
-        v-for="[type, name] in buttons"
-        class="mr-6"
-        color="primary"
-        variant="outlined"
-        rounded="1"
-        prepend-icon="mdi-arrow-up-bold-circle-outline"
-        @click="upload(Number(type))"
-      >
-        {{ name }}
-      </o-btn>
-    </div>
     <div class="mt-3">
-      <v-expansion-panels color="#424242">
-        <v-expansion-panel
-          title="履歴書"
-          text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, ratione debitis quis est labore voluptatibus! Eaque cupiditate minima"
-        >
+      <v-expansion-panels>
+        <v-expansion-panel :elevation="0">
+          <v-expansion-panel-title>
+            <div>履歴書</div>
+          </v-expansion-panel-title>
+          <v-expansion-panel-text>
+            <div class="d-flex align-center w-100">
+              <div class="ml-auto mr-3">
+                <input type="file" accept="application/pdf" @change="fileSelected" />
+                <o-btn
+                  color="primary"
+                  variant="outlined"
+                  rounded="1"
+                  prepend-icon="mdi-arrow-up-bold-circle-outline"
+                  @click="fileUpload(1)"
+                >
+                  アップロード
+                </o-btn>
+              </div>
+            </div>
+            <div v-if="pdfs" style="height: 1200px">
+              <object :data="pdfs[0]" type="application/pdf" width="100%" height="100%"></object>
+            </div>
+          </v-expansion-panel-text>
         </v-expansion-panel>
-        <v-expansion-panel
-          title="職務経歴書"
-          text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, ratione debitis quis est labore voluptatibus! Eaque cupiditate minima"
-        >
+        <v-expansion-panel :elevation="0">
+          <v-expansion-panel-title>
+            <div>職務経歴書</div>
+          </v-expansion-panel-title>
+          <v-expansion-panel-text>
+            <div class="d-flex align-center w-100">
+              <div class="ml-auto mr-3">
+                <input type="file" accept="application/pdf" @change="fileSelected" />
+                <o-btn
+                  color="primary"
+                  variant="outlined"
+                  rounded="1"
+                  prepend-icon="mdi-arrow-up-bold-circle-outline"
+                  @click="fileUpload(2)"
+                >
+                  アップロード
+                </o-btn>
+              </div>
+            </div>
+            <div v-if="pdfs" style="height: 1200px">
+              <object :data="pdfs[1]" type="application/pdf" width="100%" height="100%"></object>
+            </div>
+          </v-expansion-panel-text>
         </v-expansion-panel>
       </v-expansion-panels>
     </div>
@@ -31,15 +56,38 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
+import service from "@/services/doc";
+import { useRecruitStore } from "@/stores/recruitStore";
 
-const buttons = [
-  [1, "イメージ"],
-  [2, "履歴書"],
-  [3, "職務経歴書"],
-];
+const fileInfo = ref("");
+const store = useRecruitStore();
+const pdfs = ref([]);
 
-async function upload(type: number) {}
+const search = async () => {
+  const res = await service.search(store.recruitId);
+  const data = res.data;
+  pdfs.value = data.map((doc: any) => {
+    return "http://localhost" + doc.file_path;
+  });
+};
+
+const fileSelected = async (event: any) => {
+  fileInfo.value = event.target.files[0];
+};
+
+const fileUpload = async (type: number) => {
+  const formData = new FormData();
+  formData.append("file", fileInfo.value);
+  formData.append("type", String(type));
+
+  await service.upload(store.recruitId, formData);
+  fileInfo.value = "";
+};
+
+onMounted(async () => {
+  await search();
+});
 </script>
 
 <style scoped></style>

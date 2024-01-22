@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\AssessmentApi;
+use App\Http\Controllers\Api\DocApi;
 use App\Http\Controllers\Api\PhaseApi;
 use App\Http\Controllers\Api\RecruitApi;
 use App\Http\Controllers\Api\ResultApi;
@@ -46,6 +47,11 @@ Route::prefix('/career-link')->group(function () {
                 Route::post('/users/result', [ResultApi::class, 'storeResultPhaseUser']);
                 Route::get('/phases', [ResultApi::class, 'searchPhaseResults']);
                 Route::post('/phases', [ResultApi::class, 'storePhaseResult']);
+            });
+            // ドキュメント
+            Route::prefix('/docs')->group(function () {
+                Route::get('/', [DocApi::class, 'search']);
+                Route::post('/upload', [DocApi::class, 'upload']);
             });
         });
     });

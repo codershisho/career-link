@@ -9,6 +9,8 @@ export const customLight = {
     textsub: "#585858",
     tabbg: "#AAAAAA",
     constract: "#FFFFFF",
+    success: "#25c37a",
+    unsuccess: "#afafaf",
   },
 };
 

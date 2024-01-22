@@ -16,6 +16,11 @@ import { customLight, customDark } from "./theme";
 const vuetify = createVuetify({
   theme: {
     defaultTheme: "customLight",
+    variations: {
+      colors: ["primary", "secondary", "info", "accent"],
+      lighten: 10,
+      darken: 5,
+    },
     themes: {
       customLight,
       customDark,

@@ -24,9 +24,9 @@
               {{ position }}
             </v-chip>
           </div>
-          <o-btn color="accent" variant="flat" @click="dialog = true">
+          <!-- <o-btn color="accent" variant="flat" @click="dialog = true">
             XXX 日程調整
-          </o-btn>
+          </o-btn> -->
         </div>
       </div>
     </div>
@@ -41,7 +41,7 @@
         <div class="bg-back date rounded-b-lg">
           <template v-if="schedule.start_datetime">
             <span class="pr-3">日程：</span>
-            <span>{{ schedule.start_datetime }}</span>
+            <span class="text-textmain">{{ schedule.start_datetime }}</span>
           </template>
           <template v-else>
             <span class="pr-3">日程： 未定</span>
@@ -75,7 +75,7 @@ onMounted(async () => {
 
 <style scoped>
 .phases > .box > div {
-  width: 200px;
+  width: 250px;
   height: 70px;
   display: flex;
   align-items: center;

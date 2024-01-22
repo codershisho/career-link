@@ -17,9 +17,15 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
+import { useRecruitStore } from "@/stores/recruitStore";
 import displayCard from "@/components/recruits/displayCard.vue";
 import displayList from "@/components/recruits/displayList.vue";
 
+const store = useRecruitStore();
 const toggle = ref("card");
+
+onMounted(async () => {
+  await store.search();
+});
 </script>

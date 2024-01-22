@@ -10,8 +10,8 @@ class SearchService
     public function search(array $params)
     {
         $query = Recruit::query();
-
         $data = $query->paginate(50);
+
         return RecruitResource::collection($data)->response()->getData(true);
     }
 }

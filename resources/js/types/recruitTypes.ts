@@ -13,7 +13,8 @@ export type Recruit = {
   free_message: string;
   created_at: string;
   updated_at: string;
-  deleted_at: string | null;
+  max_phase_id: number | null;
+  max_phase_name: string | null;
 };
 
 export type PaginationLink = {

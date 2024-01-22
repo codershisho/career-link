@@ -30,7 +30,8 @@ class RecruitResource extends JsonResource
             'free_message' => $this->free_message,
             'created_at' => $this->created_at ? Carbon::parse($this->created_at)->format('Y-m-d H:i:s') : null,
             'updated_at' => $this->updated_at ? Carbon::parse($this->updated_at)->format('Y-m-d H:i:s') : null,
-            'deleted_at' => $this->deleted_at ? Carbon::parse($this->deleted_at)->format('Y-m-d H:i:s') : null,
+            'max_phase_id' => $this->max_phase_id,
+            'max_phase_name' => $this->max_phase_name,
         ];
     }
 }

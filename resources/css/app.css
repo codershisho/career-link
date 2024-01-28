@@ -48,3 +48,15 @@ body {
 .f-bold {
     font-weight: bold;
 }
+
+/* テーブルの偶数行:::::::::::::::::::::::::: */
+.com-table td {
+    background: #f0f8ff;
+}
+.com-table tr:nth-child(odd) td {
+    background: #fff;
+}
+.com-table tr:hover td {
+    background-color: #eee;
+}
+/* :::::::::::::::::::::::::::::::::::::::::: */

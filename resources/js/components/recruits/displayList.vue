@@ -1,9 +1,5 @@
 <template>
-  <v-data-table
-    class="pa-3 recruit-table"
-    :headers="headers"
-    :items="store.recruits"
-  >
+  <v-data-table class="pa-4 com-table" :headers="headers" :items="store.recruits">
     <template v-slot:item.max_phase_name="{ item }">
       <v-chip v-if="item.max_phase_id" label color="accent" variant="flat">
         <v-icon start icon="mdi-stairs-box"></v-icon>
@@ -15,13 +11,7 @@
       </v-chip>
     </template>
     <template v-slot:item.actions="{ item }">
-      <o-btn
-        color="primary"
-        variant="flat"
-        class="mr-2"
-        prepend-icon="mdi-arrow-right-bold-circle"
-        >詳細</o-btn
-      >
+      <o-btn color="primary" variant="flat" class="mr-2" prepend-icon="mdi-arrow-right-bold-circle">詳細</o-btn>
     </template>
   </v-data-table>
 </template>
@@ -39,15 +29,3 @@ const headers = [
   { title: "詳細", key: "actions", sortable: false, align: "center" },
 ];
 </script>
-
-<style>
-.recruit-table td {
-  background: #f0f8ff;
-}
-.recruit-table tr:nth-child(odd) td {
-  background: #fff;
-}
-.recruit-table tr:hover td {
-  background-color: #eee;
-}
-</style>

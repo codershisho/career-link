@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\AssessmentApi;
 use App\Http\Controllers\Api\DocApi;
 use App\Http\Controllers\Api\PhaseApi;
+use App\Http\Controllers\Api\ReasonApi;
 use App\Http\Controllers\Api\RecruitApi;
 use App\Http\Controllers\Api\ResultApi;
 use App\Http\Controllers\Api\ScheduleApi;
@@ -67,6 +68,10 @@ Route::prefix('/career-link')->group(function () {
         Route::prefix('/assessments')->group(function () {
             Route::get('/', [AssessmentApi::class, 'index']);
             Route::get('/{id}', [AssessmentApi::class, 'show']);
+        });
+        Route::prefix('/reasons')->group(function () {
+            Route::get('/', [ReasonApi::class, 'index']);
+            Route::get('/{id}', [ReasonApi::class, 'show']);
         });
     });
 });

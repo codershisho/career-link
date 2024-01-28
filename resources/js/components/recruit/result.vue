@@ -2,14 +2,8 @@
   <v-card flat class="pa-4" v-if="store.resultPhaseUsers">
     <div>
       <v-expansion-panels>
-        <v-expansion-panel
-          v-for="(phase, i) in store.resultPhaseUsers"
-          :key="i"
-        >
-          <v-expansion-panel-title
-            :color="panelColor(i)"
-            :class="panelColor(i) == '' ? '' : 'text-constract'"
-          >
+        <v-expansion-panel v-for="(phase, i) in store.resultPhaseUsers" :key="i">
+          <v-expansion-panel-title :color="panelColor(i)" :class="panelColor(i) == '' ? '' : 'text-constract'">
             <div class="d-flex align-center w-100">
               <div>{{ phase.phase_name }}</div>
               <div class="ml-auto">
@@ -17,7 +11,7 @@
                   class="mr-2"
                   prepend-icon="mdi-star"
                   :color="panelColor(i) == '' ? '' : 'constract'"
-                  @click="openAssessmentPhase(phase.phase_id)"
+                  @click.stop="openAssessmentPhase(phase.phase_id)"
                 >
                   フェーズ評価
                 </setting-btn>
@@ -25,7 +19,7 @@
                   class="mr-2"
                   prepend-icon="mdi-draw-pen"
                   :color="panelColor(i) == '' ? '' : 'constract'"
-                  @click="openChecker(phase.phase_id)"
+                  @click.stop="openChecker(phase.phase_id)"
                 >
                   選考担当者の設定
                 </setting-btn>
@@ -33,7 +27,7 @@
                   class="mr-2"
                   prepend-icon="mdi-calendar-clock"
                   :color="panelColor(i) == '' ? '' : 'constract'"
-                  @click="openMeeting(phase.phase_id)"
+                  @click.stop="openMeeting(phase.phase_id)"
                 >
                   面談・面接日の設定
                 </setting-btn>
@@ -55,36 +49,18 @@
                   <tr v-for="(user, j) in phase.phase_users" :key="j">
                     <td class="text-textmain">{{ user.user_name }}</td>
                     <td>
-                      <v-chip
-                        v-if="user.assessment_id"
-                        label
-                        :color="user.assessment_color"
-                      >
+                      <v-chip v-if="user.assessment_id" label :color="user.assessment_color">
                         {{ user.assessment_name }}
                       </v-chip>
-                      <v-chip v-else label color="grey-darken-3">
-                        未実施
-                      </v-chip>
+                      <v-chip v-else label color="grey-darken-3"> 未実施 </v-chip>
                     </td>
                     <td>
-                      <div
-                        style="
-                          word-break: break-all;
-                          overflow-wrap: break-word;
-                          white-space: break-spaces;
-                        "
-                      >
+                      <div style="word-break: break-all; overflow-wrap: break-word; white-space: break-spaces">
                         {{ user.comment }}
                       </div>
                     </td>
                     <td class="text-right">
-                      <o-btn
-                        variant="text"
-                        class="text-info"
-                        @click="openAssessment(user)"
-                      >
-                        評価登録
-                      </o-btn>
+                      <o-btn variant="text" class="text-info" @click="openAssessment(user)"> 評価登録 </o-btn>
                     </td>
                   </tr>
                 </tbody>
@@ -94,14 +70,7 @@
         </v-expansion-panel>
       </v-expansion-panels>
     </div>
-    <o-dialog
-      ref="dialog"
-      :title="dialogTitle"
-      :form="form"
-      @open="open"
-      @close="close"
-    >
-    </o-dialog>
+    <o-dialog ref="dialog" :title="dialogTitle" :form="form" @open="open" @close="close"> </o-dialog>
   </v-card>
 </template>
 

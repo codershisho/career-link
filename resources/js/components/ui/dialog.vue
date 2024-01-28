@@ -27,6 +27,7 @@ const open = () => {
 
 const close = () => {
   value.value = false;
+  emit("close");
 };
 defineExpose({
   open,

@@ -19,4 +19,11 @@ abstract class AbstractApi extends Controller
         $data['message'] = $message;
         return response()->json($data);
     }
+
+    public function setMessage($message = "")
+    {
+        return response()->json([
+            'message' => $message
+        ]);
+    }
 }

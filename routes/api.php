@@ -72,6 +72,7 @@ Route::prefix('/career-link')->group(function () {
         Route::prefix('/reasons')->group(function () {
             Route::get('/', [ReasonApi::class, 'index']);
             Route::get('/{id}', [ReasonApi::class, 'show']);
+            Route::post('/', [ReasonApi::class, 'upsert']);
         });
     });
 });

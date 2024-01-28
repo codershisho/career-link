@@ -50,6 +50,7 @@ import checkerForm from "@/components/recruit/checkerForm.vue";
 import meetingForm from "@/components/recruit/meetingForm.vue";
 import assessmentForm from "@/components/recruit/assessmentForm.vue";
 import assessmentPhase from "@/components/recruit/assessmentPhase.vue";
+import reasonForm from "@/components/master/reasonForm.vue";
 
 const app = createApp(App);
 
@@ -71,5 +72,6 @@ app.component("checkerForm", checkerForm);
 app.component("meetingForm", meetingForm);
 app.component("assessmentForm", assessmentForm);
 app.component("assessmentPhase", assessmentPhase);
+app.component("reasonForm", reasonForm);
 
 app.mount("#app");

@@ -7,6 +7,12 @@ import { User, Master } from "@/types/mastersType";
 export const useMasterStore = defineStore("master", () => {
   const users = ref<User[] | null>();
   const reasons = ref<Master[] | null>();
+  const editUser = ref<User>({
+    id: 0,
+    name: "",
+    is_checker: 0,
+    image: "",
+  });
   const editReason = ref<Master>({
     id: 0,
     name: "",
@@ -22,6 +28,10 @@ export const useMasterStore = defineStore("master", () => {
     reasons.value = res.data;
   };
 
+  const upsertUser = async () => {
+    await uService.upsert(editUser.value);
+  };
+
   const upsertReason = async () => {
     await rService.upsert(editReason.value);
   };
@@ -29,9 +39,11 @@ export const useMasterStore = defineStore("master", () => {
   return {
     users,
     reasons,
+    editUser,
     editReason,
     fetchUsers,
     fetchReasons,
+    upsertUser,
     upsertReason,
   };
 });

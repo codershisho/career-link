@@ -18,7 +18,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('image')->nullable()->comment('画像パス');
-            $table->boolean('is_cheker')->default(true)->comment('選考対応可能者か');
+            $table->boolean('is_checker')->default(true)->comment('選考対応可能者か');
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();

@@ -17,8 +17,8 @@ const vuetify = createVuetify({
   theme: {
     defaultTheme: "customLight",
     variations: {
-      colors: ["primary", "secondary", "info", "accent"],
-      lighten: 10,
+      colors: ["primary", "secondary", "info", "accent", "tabbg"],
+      lighten: 5,
       darken: 5,
     },
     themes: {
@@ -51,6 +51,7 @@ import meetingForm from "@/components/recruit/meetingForm.vue";
 import assessmentForm from "@/components/recruit/assessmentForm.vue";
 import assessmentPhase from "@/components/recruit/assessmentPhase.vue";
 import reasonForm from "@/components/master/reasonForm.vue";
+import userForm from "@/components/master/userForm.vue";
 
 const app = createApp(App);
 
@@ -73,5 +74,6 @@ app.component("meetingForm", meetingForm);
 app.component("assessmentForm", assessmentForm);
 app.component("assessmentPhase", assessmentPhase);
 app.component("reasonForm", reasonForm);
+app.component("userForm", userForm);
 
 app.mount("#app");

@@ -64,6 +64,7 @@ Route::prefix('/career-link')->group(function () {
         Route::prefix('/users')->group(function () {
             Route::get('/', [UserApi::class, 'index']);
             Route::get('/{id}', [UserApi::class, 'show']);
+            Route::post('/', [UserApi::class, 'upsert']);
         });
         Route::prefix('/assessments')->group(function () {
             Route::get('/', [AssessmentApi::class, 'index']);

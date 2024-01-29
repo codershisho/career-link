@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
         $this->call(PhasesTableSeeder::class);
         $this->call(UserSeeder::class);
         $this->call(AssessmentSeeder::class);
+        $this->call(ReasonSeeder::class);
 
         Schema::enableForeignKeyConstraints();
     }

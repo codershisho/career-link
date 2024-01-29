@@ -37,6 +37,8 @@ class ResultPhaseUserResource extends JsonResource
                 'assessment_id' => $user->assessment->id,
                 'assessment_name' => $user->assessment->name,
                 'assessment_color' => $user->assessment->color_code,
+                'reason_id' => $user->reason->id,
+                'reason_name' => $user->reason->name,
                 'comment' => $user->comments,
             ];
         })->values()->toArray();

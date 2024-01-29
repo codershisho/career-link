@@ -2,8 +2,11 @@
   <v-card flat class="pa-4" v-if="store.resultPhaseUsers">
     <div>
       <v-expansion-panels>
-        <v-expansion-panel v-for="(phase, i) in store.resultPhaseUsers" :key="i">
-          <v-expansion-panel-title :color="panelColor(i)" :class="panelColor(i) == '' ? '' : 'text-constract'">
+        <v-expansion-panel v-for="(phase, i) in store.resultPhaseUsers" :key="i" :elevation="0">
+          <v-expansion-panel-title
+            :color="panelColor(i)"
+            :class="panelColor(i) == '' ? 'text-textmain' : 'text-constract'"
+          >
             <div class="d-flex align-center w-100">
               <div>{{ phase.phase_name }}</div>
               <div class="ml-auto">
@@ -36,11 +39,12 @@
           </v-expansion-panel-title>
           <v-expansion-panel-text>
             <div class="pt-3">
-              <v-table v-if="phase.phase_users">
+              <v-table v-if="phase.phase_users" class="result-table">
                 <thead class="bg-blue-grey-lighten-5 text-textmain">
                   <tr>
                     <th class="text-left w-20">評価者</th>
                     <th class="text-left w-10">評価</th>
+                    <th class="text-left">理由</th>
                     <th class="text-left">コメント</th>
                     <th class="text-right">評価登録</th>
                   </tr>
@@ -54,13 +58,22 @@
                       </v-chip>
                       <v-chip v-else label color="grey-darken-3"> 未実施 </v-chip>
                     </td>
-                    <td>
-                      <div style="word-break: break-all; overflow-wrap: break-word; white-space: break-spaces">
+                    <td class="text-textmain">{{ user.reason_name }}</td>
+                    <td class="text-textmain">
+                      <div
+                        style="
+                          word-break: break-all;
+                          overflow-wrap: break-word;
+                          white-space: break-spaces;
+                        "
+                      >
                         {{ user.comment }}
                       </div>
                     </td>
                     <td class="text-right">
-                      <o-btn variant="text" class="text-info" @click="openAssessment(user)"> 評価登録 </o-btn>
+                      <o-btn variant="text" class="pa-0 text-info" @click="openAssessment(user)">
+                        評価登録
+                      </o-btn>
                     </td>
                   </tr>
                 </tbody>
@@ -70,7 +83,7 @@
         </v-expansion-panel>
       </v-expansion-panels>
     </div>
-    <o-dialog ref="dialog" :title="dialogTitle" :form="form" @open="open" @close="close"> </o-dialog>
+    <o-dialog ref="dialog" :title="dialogTitle" :form="form"> </o-dialog>
   </v-card>
 </template>
 
@@ -90,9 +103,9 @@ const panelColor = computed(() => (index: number): string => {
   if (store.phaseResults) {
     const resultFlg = store.phaseResults[index].result_flg;
     switch (resultFlg) {
-      case 1:
+      case true:
         return "success";
-      case 0:
+      case false:
         return "unsuccess";
       default:
         return "";
@@ -129,9 +142,16 @@ function openMeeting(phaseId: number) {
 function open() {
   dialog.value?.open();
 }
-function close() {
-  dialog.value?.close();
-}
 </script>
 
-<style scoped></style>
+<style scoped>
+.result-table table > thead > tr > th:nth-child(1),
+.result-table table > thead > tr > th:nth-child(2),
+.result-table table > thead > tr > th:nth-child(5) {
+  width: 10%;
+}
+.result-table table > thead > tr > th:nth-child(3),
+.result-table table > thead > tr > th:nth-child(4) {
+  width: 35%;
+}
+</style>

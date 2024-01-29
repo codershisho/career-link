@@ -34,6 +34,7 @@ class StorePhaseUserService
                     'phase_id' => $phaseId,
                     'user_id' => $userId,
                     'assessment_id' => 1,
+                    'reason_id' => 1,
                 ]);
             }
         });

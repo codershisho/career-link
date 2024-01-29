@@ -5,6 +5,7 @@ import { default as pservice } from "@/services/phase";
 import { default as uservice } from "@/services/user";
 import { default as aservice } from "@/services/assessment";
 import { default as rservice } from "@/services/result";
+import { default as reservice } from "@/services/reason";
 import {
   Schedule,
   Master,
@@ -13,18 +14,20 @@ import {
   PhaseUser,
   PhaseResult,
 } from "@/types/scheduleTypes";
+import { User } from "@/types/mastersType";
 
 export const useScheduleStore = defineStore("schedule", () => {
   const recruitId = ref(0);
   const schedules = ref<Schedule[] | null>(null);
   const phases = ref<Master[] | null>(null);
   const notYetPhase = ref<Master[] | null>(null);
-  const users = ref<Master[] | null>(null);
+  const users = ref<User[] | null>(null);
   const assessments = ref<MasterAssessment[] | null>(null);
   const resultPhaseUsers = ref<ResultPhaseUser[] | null>(null);
   const selectedPhaseId = ref(0);
   const selectedPhaseUser = ref<PhaseUser | null>(null);
   const phaseResults = ref<PhaseResult[] | null>(null);
+  const reasons = ref<Master[] | null>(null);
 
   const setRecruitId = (id: number) => {
     recruitId.value = id;
@@ -60,9 +63,7 @@ export const useScheduleStore = defineStore("schedule", () => {
 
   const filterNotYetPhase = () => {
     // とりあえず、未スケジュールのフェーズをセットする
-    const notYetPhases = schedules.value?.filter(
-      (schedule) => schedule.start_datetime == null
-    );
+    const notYetPhases = schedules.value?.filter((schedule) => schedule.start_datetime == null);
     // 条件に合致するデータの特定の要素（例: phase）だけを抽出する
     const notYetPhasesValues =
       notYetPhases?.map((schedule) => {
@@ -95,10 +96,7 @@ export const useScheduleStore = defineStore("schedule", () => {
 
   /** 各フェーズの選考担当者の評価登録 */
   const storeResultPhaseUser = async () => {
-    const res = await rservice.storeResultPhaseUser(
-      recruitId.value,
-      selectedPhaseUser.value
-    );
+    const res = await rservice.storeResultPhaseUser(recruitId.value, selectedPhaseUser.value);
   };
 
   /** 各フェーズの結果を検索 */
@@ -114,6 +112,11 @@ export const useScheduleStore = defineStore("schedule", () => {
     await rservice.storePhaseResult(recruitId.value, body);
   };
 
+  const searchReasons = async () => {
+    const res = await reservice.index();
+    reasons.value = res.data;
+  };
+
   return {
     recruitId,
     schedules,
@@ -125,6 +128,7 @@ export const useScheduleStore = defineStore("schedule", () => {
     selectedPhaseId,
     selectedPhaseUser,
     phaseResults,
+    reasons,
     setRecruitId,
     setPhaseId,
     setPhaseUser,
@@ -137,5 +141,6 @@ export const useScheduleStore = defineStore("schedule", () => {
     storeResultPhaseUser,
     searchPhaseResults,
     storePhaseResult,
+    searchReasons,
   };
 });

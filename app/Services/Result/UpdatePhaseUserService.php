@@ -22,6 +22,7 @@ class UpdatePhaseUserService
             ],
             [
                 'assessment_id' => $params['assessment_id'],
+                'reason_id' => $params['reason_id'],
                 'comments' => $params['comment'],
             ]
         );

@@ -46,9 +46,6 @@ class ResultApi extends AbstractApi
      */
     public function storeResultPhaseUser($id, Request $request, UpdatePhaseUserService $service)
     {
-        Logger($id);
-        Logger($request->all());
-
         $service->store($id, $request->all());
         return response()->json(['message' => '評価者の登録完了']);
     }

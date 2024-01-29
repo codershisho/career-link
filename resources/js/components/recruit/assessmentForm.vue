@@ -16,17 +16,18 @@
       <div class="d-flex align-center py-4">
         <div class="text-textmain w-30">理由</div>
         <o-auto
-          v-if="store.assessments"
-          :items="store.assessments"
+          v-if="store.reasons"
+          :items="store.reasons"
           item-title="name"
           item-value="id"
           :rules="[required]"
+          v-model="store.selectedPhaseUser.reason_id"
         >
         </o-auto>
       </div>
       <div class="d-flex align-center py-4">
         <div class="text-textmain w-30">コメント</div>
-        <o-area placeholder="評価に関してコメント" v-model="store.selectedPhaseUser.comment" :rules="[required]">
+        <o-area placeholder="評価に関してコメント" v-model="store.selectedPhaseUser.comment">
         </o-area>
       </div>
       <v-divider></v-divider>

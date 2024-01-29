@@ -23,7 +23,8 @@ class SearchService
                 $q->where('recruit_id', $id);
             },
             'phase_users.user',
-            'phase_users.assessment'
+            'phase_users.assessment',
+            'phase_users.reason',
         ]);
 
         $data = $query->get();

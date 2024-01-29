@@ -4,7 +4,7 @@
       <v-expansion-panels>
         <v-expansion-panel :elevation="0">
           <v-expansion-panel-title>
-            <div>履歴書</div>
+            <div class="text-textmain">履歴書</div>
           </v-expansion-panel-title>
           <v-expansion-panel-text>
             <div class="d-flex align-center w-100">
@@ -28,7 +28,7 @@
         </v-expansion-panel>
         <v-expansion-panel :elevation="0">
           <v-expansion-panel-title>
-            <div>職務経歴書</div>
+            <div class="text-textmain">職務経歴書</div>
           </v-expansion-panel-title>
           <v-expansion-panel-text>
             <div class="d-flex align-center w-100">

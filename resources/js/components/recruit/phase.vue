@@ -8,9 +8,7 @@
         <span class="text-primary" style="font-size: 1.3rem">
           {{ recruitStore.recruit?.name }}
         </span>
-        <span class="text-textmain"
-          >（{{ recruitStore.recruit?.name_kana }}）</span
-        >
+        <span class="text-textmain">（{{ recruitStore.recruit?.name_kana }}）</span>
         <v-divider class="my-2"></v-divider>
         <div class="d-flex align-center mt-5">
           <div class="d-flex align-center mr-auto">
@@ -24,20 +22,15 @@
               {{ position }}
             </v-chip>
           </div>
-          <!-- <o-btn color="accent" variant="flat" @click="dialog = true">
-            XXX 日程調整
-          </o-btn> -->
         </div>
       </div>
     </div>
     <v-divider class="my-5"></v-divider>
     <div class="phases d-flex align-center justify-space-around">
-      <div
-        v-for="(schedule, i) in scheduleStore.schedules"
-        :key="i"
-        class="box rounded-lg"
-      >
-        <div class="bg-info title rounded-t-lg">{{ schedule.phase_name }}</div>
+      <div v-for="(schedule, i) in scheduleStore.schedules" :key="i" class="box rounded-lg">
+        <div class="title rounded-t-lg" :class="`bg-primary-lighten-` + (i + 1)">
+          {{ schedule.phase_name }}
+        </div>
         <div class="bg-back date rounded-b-lg">
           <template v-if="schedule.start_datetime">
             <span class="pr-3">日程：</span>
@@ -70,13 +63,14 @@ onMounted(async () => {
   await scheduleStore.searchAssessments();
   await scheduleStore.searchResultPhaseUsers();
   await scheduleStore.searchPhaseResults();
+  await scheduleStore.searchReasons();
 });
 </script>
 
 <style scoped>
 .phases > .box > div {
   width: 250px;
-  height: 70px;
+  height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;

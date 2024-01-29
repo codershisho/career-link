@@ -32,6 +32,8 @@ export type PhaseUser = {
   assessment_id: number;
   assessment_name: string;
   assessment_color: string;
+  reason_id: number;
+  reason_name: string;
   comment: string | null;
 };
 

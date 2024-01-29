@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreignId('phase_id')->constrained('m_phases');
             $table->foreignId('user_id')->constrained('users');
             $table->foreignId('assessment_id')->constrained('m_assessments');
+            $table->foreignId('reason_id')->constrained('m_reasons');
             $table->text('comments')->nullable()->comment('コメント');
             $table->timestamps();
             $table->softDeletes();

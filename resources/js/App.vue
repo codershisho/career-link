@@ -1,6 +1,6 @@
 <template>
   <v-app id="inspire">
-    <v-navigation-drawer v-model="drawer">
+    <v-navigation-drawer v-model="drawer" class="navigation">
       <v-list>
         <div>
           <img src="" />
@@ -8,7 +8,8 @@
         <template v-for="(menu, i) in menus" :key="i">
           <v-list-group v-if="menu.children">
             <template v-slot:activator="{ props }">
-              <v-list-item v-bind="props" :title="menu.name" :prepend-icon="menu.icon"> </v-list-item>
+              <v-list-item v-bind="props" :title="menu.name" :prepend-icon="menu.icon">
+              </v-list-item>
             </template>
             <v-list-item
               v-for="(child, j) in menu.children"
@@ -50,7 +51,7 @@ const menus = [
   {
     id: 1,
     name: "ダッシュボード",
-    icon: "mdi-home",
+    icon: "mdi-home-outline",
     url: "/dashboard",
     children: null,
   },
@@ -64,19 +65,19 @@ const menus = [
   {
     id: 3,
     name: "管理",
-    icon: "mdi-account-circle-outline",
+    icon: "mdi-cog-outline",
     url: "",
     children: [
       {
         id: 4,
         name: "ユーザー管理",
-        icon: "mdi-account-circle-outline",
+        icon: "mdi-account-group-outline",
         url: "/admin/users",
       },
       {
         id: 5,
         name: "理由管理",
-        icon: "mdi-account-circle-outline",
+        icon: "mdi-account-cancel-outline",
         url: "/admin/reasons",
       },
     ],
@@ -87,5 +88,8 @@ const menus = [
 <style>
 .menu-item .v-list-item__overlay {
   background-color: royalblue !important;
+}
+.navigation .v-list-group__items > a.v-list-item {
+  padding-inline-start: 40px !important;
 }
 </style>

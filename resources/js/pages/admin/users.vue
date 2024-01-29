@@ -23,8 +23,8 @@
         <tr v-for="(user, i) in store.users" :key="i" @click="editOpen(user)">
           <td>{{ user.id }}</td>
           <td>
-            <v-avatar class="pa-1 ma-1 mr-3" :size="60" color="tabbg-lighten-2">
-              <v-img :src="user.image ? user.image : ``" alt="John"> </v-img>
+            <v-avatar class="pa-1 ma-1 mr-3" :size="50">
+              <v-img :src="user.image ? user.image : ``" alt="John" sizes="50"> </v-img>
             </v-avatar>
             {{ user.name }}
           </td>

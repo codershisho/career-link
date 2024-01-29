@@ -19,6 +19,12 @@ class UserApi extends AbstractApi
     public function index()
     {
         $data = User::all();
+        $data = $data->map(function ($user) {
+            if (!$user['image']) {
+                $user['image'] = '/storage/users/no_image.png';
+            }
+            return $user;
+        });
         return $this->setResponse($data);
     }
 

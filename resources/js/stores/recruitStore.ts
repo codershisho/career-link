@@ -22,5 +22,9 @@ export const useRecruitStore = defineStore("recruit", () => {
     recruit.value = res.data;
   };
 
-  return { recruits, recruit, recruitId, setRecruitId, search, show };
+  const uploadImage = async (params: FormData) => {
+    await service.uploadImage(recruitId.value, params);
+  };
+
+  return { recruits, recruit, recruitId, setRecruitId, search, show, uploadImage };
 });

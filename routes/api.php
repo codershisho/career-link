@@ -36,6 +36,7 @@ Route::prefix('/career-link')->group(function () {
         // 応募者毎
         Route::prefix('/{id}')->group(function () {
             Route::get('/', [RecruitApi::class, 'show']);
+            Route::post('/image', [RecruitApi::class, 'uploadImage']);
             // スケジュール情報
             Route::prefix('/schedules')->group(function () {
                 Route::get('/', [ScheduleApi::class, 'search']);

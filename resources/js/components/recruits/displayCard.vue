@@ -1,20 +1,14 @@
 <template>
   <div class="d-flex flex-wrap">
-    <v-card
-      v-for="(recruit, i) in store.recruits"
-      class="ma-2 pa-4 flex-basis-30"
-    >
+    <v-card v-for="(recruit, i) in store.recruits" class="ma-2 pa-4 flex-basis-30">
       <div class="recruit-top d-flex">
         <div class="pl-0 mr-2">
-          <v-avatar size="100" color="grey-lighten-3"></v-avatar>
+          <v-avatar size="100">
+            <v-img :src="recruit.image" alt="John" sizes="50"> </v-img>
+          </v-avatar>
         </div>
         <div class="ml-auto">
-          <v-chip
-            v-if="recruit.max_phase_id"
-            label
-            color="accent"
-            variant="flat"
-          >
+          <v-chip v-if="recruit.max_phase_id" label color="accent" variant="flat">
             <v-icon start icon="mdi-stairs-box"></v-icon>
             {{ recruit.max_phase_name }}
           </v-chip>
@@ -27,9 +21,7 @@
       <div class="recruit-center">
         <div class="py-5 pl-3">
           <span class="text-primary font-weight-bold">{{ recruit.name }}</span>
-          <span class="text-textmain font-weight-bold">
-            （{{ recruit.name_kana }}）
-          </span>
+          <span class="text-textmain font-weight-bold"> （{{ recruit.name_kana }}） </span>
         </div>
         <div>
           <v-chip

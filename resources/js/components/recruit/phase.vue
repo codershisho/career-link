@@ -2,7 +2,9 @@
   <v-card flat class="pa-4">
     <div class="d-flex align-center">
       <div class="w-10">
-        <v-sheet width="100" height="100" color="grey">イメージ</v-sheet>
+        <v-avatar size="100" color="red">
+          <v-img :src="recruitStore.recruit?.image" alt="John" sizes="50"> </v-img>
+        </v-avatar>
       </div>
       <div class="w-100">
         <span class="text-primary" style="font-size: 1.3rem">

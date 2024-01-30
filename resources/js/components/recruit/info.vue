@@ -46,6 +46,18 @@
       <div class="text-textmain pb-2">free message:</div>
       <o-area variant="outlined" v-model="store.recruit.free_message"></o-area>
     </div>
+    <div class="mt-2">
+      <input type="file" accept="image/png,image/jpeg,image/jpg" @change="fileSelected" />
+      <o-btn
+        color="primary"
+        variant="outlined"
+        rounded="1"
+        prepend-icon="mdi-arrow-up-bold-circle-outline"
+        @click="fileUpload"
+      >
+        アップロード
+      </o-btn>
+    </div>
   </v-card>
 </template>
 
@@ -54,10 +66,23 @@ import { ref, onMounted } from "vue";
 import { useRecruitStore } from "@/stores/recruitStore";
 
 const store = useRecruitStore();
+const fileInfo = ref("");
 
 onMounted(async () => {
   await store.show();
 });
+
+const fileSelected = async (event: any) => {
+  fileInfo.value = event.target.files[0];
+};
+
+const fileUpload = async () => {
+  const formData = new FormData();
+  formData.append("file", fileInfo.value);
+  await store.uploadImage(formData);
+  fileInfo.value = "";
+  await store.show();
+};
 </script>
 
 <style scoped>

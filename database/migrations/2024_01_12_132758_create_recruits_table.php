@@ -24,6 +24,7 @@ return new class extends Migration
             $table->date('join_date')->nullable()->comment('希望時期');
             $table->text('source')->nullable()->comment('情報源');
             $table->text('free_message')->nullable()->comment('メッセージ');
+            $table->string('image')->nullable()->comment('イメージ');
             $table->timestamps();
             $table->softDeletes();
         });

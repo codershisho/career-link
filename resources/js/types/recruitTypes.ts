@@ -11,6 +11,7 @@ export type Recruit = {
   join_date: string;
   source: string;
   free_message: string;
+  image: string;
   created_at: string;
   updated_at: string;
   max_phase_id: number | null;

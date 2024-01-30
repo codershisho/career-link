@@ -21,6 +21,14 @@ class Recruit extends Model
         return $this->hasMany(PhaseResult::class, 'recruit_id', 'id');
     }
 
+    public function getImageAttribute()
+    {
+        if (empty($this->attributes['image'])) {
+            return '/storage/users/no_image.png';
+        }
+        return $this->attributes['image'];
+    }
+
     public function getMaxPhaseIdAttribute()
     {
         return $this->phase_results()->max('phase_id');

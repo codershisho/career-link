@@ -28,6 +28,7 @@ class RecruitResource extends JsonResource
             'join_date' => $this->join_date ? Carbon::parse($this->join_date)->format('Y-m-d') : null,
             'source' => $this->source,
             'free_message' => $this->free_message,
+            'image' => $this->image,
             'created_at' => $this->created_at ? Carbon::parse($this->created_at)->format('Y-m-d H:i:s') : null,
             'updated_at' => $this->updated_at ? Carbon::parse($this->updated_at)->format('Y-m-d H:i:s') : null,
             'max_phase_id' => $this->max_phase_id,

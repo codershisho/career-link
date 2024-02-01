@@ -27,8 +27,8 @@ class Calendar extends AbstractApi
                 'start' => $schedule['start_datetime'],
                 'end' => $schedule['end_datetime'],
                 'title' => $title,
-                'backgroundColor' => '#33B679',
-                'borderColor' => '#33B679',
+                'backgroundColor' => '#3F51B5',
+                'borderColor' => '#3F51B5',
                 'textColor' => 'white',
             ];
         });

@@ -1,6 +1,6 @@
 <template>
   <v-app id="inspire">
-    <v-navigation-drawer v-model="drawer" class="navigation">
+    <v-navigation-drawer v-model="drawer" class="navigation navi-gradient">
       <v-list>
         <div>
           <img src="" />
@@ -8,7 +8,12 @@
         <template v-for="(menu, i) in menus" :key="i">
           <v-list-group v-if="menu.children">
             <template v-slot:activator="{ props }">
-              <v-list-item v-bind="props" :title="menu.name" :prepend-icon="menu.icon">
+              <v-list-item
+                class="text-white"
+                v-bind="props"
+                :title="menu.name"
+                :prepend-icon="menu.icon"
+              >
               </v-list-item>
             </template>
             <v-list-item
@@ -19,7 +24,7 @@
               :to="child.url"
               link
               bg-color="primary"
-              class="menu-item"
+              class="menu-item text-white"
             ></v-list-item>
           </v-list-group>
           <v-list-item
@@ -29,7 +34,7 @@
             :to="menu.url"
             link
             bg-color="primary"
-            class="menu-item"
+            class="menu-item text-white"
           ></v-list-item>
         </template>
       </v-list>
@@ -93,8 +98,17 @@ const menus = [
 </script>
 
 <style>
+.navi-gradient {
+  background: rgb(2, 0, 36) !important;
+  background: linear-gradient(
+    180deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(9, 9, 121, 1) 29%,
+    rgba(0, 212, 255, 1) 100%
+  ) !important;
+}
 .menu-item .v-list-item__overlay {
-  background-color: royalblue !important;
+  background-color: rgb(255, 255, 255) !important;
 }
 .navigation .v-list-group__items > a.v-list-item {
   padding-inline-start: 40px !important;

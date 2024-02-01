@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, onMounted } from "vue";
+import { ref, reactive, onMounted, watch } from "vue";
 import { useCalendarStore } from "@/stores/calendarStore";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
@@ -103,5 +103,25 @@ td.fc-day-sun .fc-daygrid-day-number {
 td.fc-timegrid-slot {
   height: 2.5em !important;
   border-bottom: 0 !important;
+}
+.fc-dayGridMonth-button,
+.fc-timeGridWeek-button {
+  background-color: #1bbc9c5b !important;
+  border-color: #1bbc9c5b !important;
+  color: white !important;
+}
+.fc-dayGridMonth-button.active,
+.fc-timeGridWeek-button.active {
+  background-color: #1bbc9c !important;
+  border-color: #1bbc9c !important;
+  color: white !important;
+}
+
+.fc-prev-button,
+.fc-next-button,
+.fc-today-button {
+  background-color: #1bbc9c !important;
+  border-color: #1bbc9c !important;
+  color: white !important;
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div class="d-flex flex-wrap">
-    <v-card v-for="(recruit, i) in store.recruits" class="ma-2 pa-4 flex-basis-30">
+    <v-card v-for="(recruit, i) in store.recruits" class="ma-2 pa-4 flex-basis-30" flat>
       <div class="recruit-top d-flex">
         <div class="pl-0 mr-2">
           <v-avatar size="100">

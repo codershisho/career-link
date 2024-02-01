@@ -19,4 +19,9 @@ class Schedule extends Model
     {
         return $this->belongsTo(Phase::class, 'phase_id', 'id');
     }
+
+    public function recruit()
+    {
+        return $this->belongsTo(Recruit::class, 'recruit_id', 'id');
+    }
 }

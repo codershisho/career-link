@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import dashboard from "./pages/dashboard.vue";
 import recruits from "./pages/recruits.vue";
 import recruit from "./pages/recruit.vue";
+import calendar from "./pages/calendar.vue";
 import users from "./pages/admin/users.vue";
 import reasons from "./pages/admin/reasons.vue";
 
@@ -23,6 +24,11 @@ const router = createRouter({
       name: "recruit",
       component: recruit,
       props: true,
+    },
+    {
+      path: "/calendar",
+      name: "calendar",
+      component: calendar,
     },
     {
       path: "/admin/users",

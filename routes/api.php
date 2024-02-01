@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\AssessmentApi;
+use App\Http\Controllers\Api\Calendar;
 use App\Http\Controllers\Api\DocApi;
 use App\Http\Controllers\Api\PhaseApi;
 use App\Http\Controllers\Api\ReasonApi;
@@ -56,6 +57,10 @@ Route::prefix('/career-link')->group(function () {
                 Route::post('/upload', [DocApi::class, 'upload']);
             });
         });
+    });
+    Route::prefix('/calendars')->group(function () {
+        // カレンダー
+        Route::get('/', [Calendar::class, 'search']);
     });
     Route::prefix('/ms')->group(function () {
         Route::prefix('/phases')->group(function () {

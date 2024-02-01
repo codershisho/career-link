@@ -64,18 +64,25 @@ const menus = [
   },
   {
     id: 3,
+    name: "カレンダー",
+    icon: "mdi-calendar-month-outline",
+    url: "/calendar",
+    children: null,
+  },
+  {
+    id: 4,
     name: "管理",
     icon: "mdi-cog-outline",
     url: "",
     children: [
       {
-        id: 4,
+        id: 5,
         name: "ユーザー管理",
         icon: "mdi-account-group-outline",
         url: "/admin/users",
       },
       {
-        id: 5,
+        id: 6,
         name: "理由管理",
         icon: "mdi-account-cancel-outline",
         url: "/admin/reasons",

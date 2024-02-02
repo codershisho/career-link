@@ -82,9 +82,9 @@ const menus = [
     children: [
       {
         id: 5,
-        name: "部署別",
+        name: "応募者数",
         icon: "fa-solid fa-building-user",
-        url: "/analysis/department",
+        url: "/analysis/analysis",
       },
       {
         id: 6,
@@ -92,12 +92,12 @@ const menus = [
         icon: "fa-solid fa-stairs",
         url: "/analysis/phase",
       },
-      {
-        id: 7,
-        name: "応募元",
-        icon: "fa-solid fa-sitemap",
-        url: "/analysis/source",
-      },
+      // {
+      //   id: 7,
+      //   name: "応募元",
+      //   icon: "fa-solid fa-sitemap",
+      //   url: "/analysis/source",
+      // },
     ],
   },
   {

@@ -4,9 +4,8 @@ import recruits from "./pages/recruits.vue";
 import recruit from "./pages/recruit.vue";
 import calendar from "./pages/calendar.vue";
 
-import departmentAnalysis from "./pages/analysis/departmentAnalysis.vue";
+import analysis from "./pages/analysis/analysis.vue";
 import phaseAnalysis from "./pages/analysis/phaseAnalysis.vue";
-import sourceAnalysis from "./pages/analysis/sourceAnalysis.vue";
 
 import departmentTips from "./pages/tips/departmentTips.vue";
 
@@ -38,19 +37,14 @@ const router = createRouter({
       component: calendar,
     },
     {
-      path: "/analysis/department",
-      name: "departmentAnalysis",
-      component: departmentAnalysis,
+      path: "/analysis/analysis",
+      name: "analysis",
+      component: analysis,
     },
     {
       path: "/analysis/phase",
       name: "phaseAnalysis",
       component: phaseAnalysis,
-    },
-    {
-      path: "/analysis/source",
-      name: "sourceAnalysis",
-      component: sourceAnalysis,
     },
     {
       path: "/tips/departments",

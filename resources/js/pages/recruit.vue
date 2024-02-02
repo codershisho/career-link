@@ -43,9 +43,9 @@ store.setRecruitId(Number(props.id));
 scheduleStore.setRecruitId(Number(props.id));
 
 const tabButtons = [
-  ["基本情報", "infos", "mdi-information"],
-  ["書類", "docs", "mdi-file-document-check"],
-  ["選考結果", "result", "mdi-flag-checkered"],
+  ["基本情報", "infos", "mdi:mdi-information"],
+  ["書類", "docs", "mdi:mdi-file-document-check"],
+  ["選考結果", "result", "mdi:mdi-flag-checkered"],
 ];
 </script>
 

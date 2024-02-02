@@ -9,11 +9,11 @@
         </div>
         <div class="ml-auto">
           <v-chip v-if="recruit.max_phase_id" label color="accent" variant="flat">
-            <v-icon start icon="mdi-stairs-box"></v-icon>
+            <v-icon start icon="mdi:mdi-stairs-box"></v-icon>
             {{ recruit.max_phase_name }}
           </v-chip>
           <v-chip v-else label>
-            <v-icon start icon="mdi-sticker-alert"></v-icon>
+            <v-icon start icon="mdi:mdi-sticker-alert"></v-icon>
             未選考　
           </v-chip>
         </div>
@@ -39,7 +39,7 @@
           color="primary"
           block
           variant="flat"
-          prepend-icon="mdi-arrow-right-bold-circle"
+          prepend-icon="mdi:mdi-arrow-right-bold-circle"
           @click="gotoDetail(recruit.id)"
         >
           詳細

@@ -12,7 +12,7 @@
               <div class="ml-auto">
                 <setting-btn
                   class="mr-2"
-                  prepend-icon="mdi-star"
+                  prepend-icon="mdi:mdi-star"
                   :color="panelColor(i) == '' ? '' : 'constract'"
                   @click.stop="openAssessmentPhase(phase.phase_id)"
                 >
@@ -20,7 +20,7 @@
                 </setting-btn>
                 <setting-btn
                   class="mr-2"
-                  prepend-icon="mdi-draw-pen"
+                  prepend-icon="mdi:mdi-draw-pen"
                   :color="panelColor(i) == '' ? '' : 'constract'"
                   @click.stop="openChecker(phase.phase_id)"
                 >
@@ -28,7 +28,7 @@
                 </setting-btn>
                 <setting-btn
                   class="mr-2"
-                  prepend-icon="mdi-calendar-clock"
+                  prepend-icon="mdi:mdi-calendar-clock"
                   :color="panelColor(i) == '' ? '' : 'constract'"
                   @click.stop="openMeeting(phase.phase_id)"
                 >

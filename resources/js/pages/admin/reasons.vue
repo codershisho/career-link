@@ -5,7 +5,7 @@
         class="ml-auto mb-4"
         color="accent"
         variant="flat"
-        prepend-icon="mdi-plus-circle"
+        prepend-icon="mdi:mdi-plus-circle"
         @click="newOpen"
       >
         新規作成

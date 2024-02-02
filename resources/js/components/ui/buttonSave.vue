@@ -1,10 +1,5 @@
 <template>
-  <v-btn
-    v-bind="$attrs"
-    color="accent"
-    variant="flat"
-    prepend-icon="mdi-content-save-edit"
-  >
+  <v-btn v-bind="$attrs" color="accent" variant="flat" prepend-icon="mdi:mdi-content-save-edit">
     保存
   </v-btn>
 </template>

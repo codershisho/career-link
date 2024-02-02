@@ -14,7 +14,7 @@
                   color="primary"
                   variant="outlined"
                   rounded="1"
-                  prepend-icon="mdi-arrow-up-bold-circle-outline"
+                  prepend-icon="mdi:mdi:mdi-arrow-up-bold-circle-outline"
                   @click="fileUpload(1)"
                 >
                   アップロード
@@ -38,7 +38,7 @@
                   color="primary"
                   variant="outlined"
                   rounded="1"
-                  prepend-icon="mdi-arrow-up-bold-circle-outline"
+                  prepend-icon="mdi:mdi-arrow-up-bold-circle-outline"
                   @click="fileUpload(2)"
                 >
                   アップロード

@@ -4,7 +4,7 @@
       <div>
         <div class="d-flex align-center">
           <div class="text-textmain f-xl mr-auto">面談日程登録</div>
-          <v-icon color="tabbg" icon="mdi-close" @click="value = false" />
+          <v-icon color="tabbg" icon="mdi:mdi-close" @click="value = false" />
         </div>
         <v-divider class="my-2"></v-divider>
         <div class="w-50">

@@ -2,8 +2,8 @@
   <div class="ma-2 d-flex align-center">
     <div class="me-auto">
       <v-btn-toggle v-model="toggle" color="primary" mandatory>
-        <v-btn icon="mdi-card-account-details" value="card"></v-btn>
-        <v-btn icon="mdi-list-box" value="list"></v-btn>
+        <v-btn icon="mdi:mdi-card-account-details" value="card"></v-btn>
+        <v-btn icon="mdi:mdi-list-box" value="list"></v-btn>
       </v-btn-toggle>
     </div>
     <o-btn color="accent" variant="flat">インポート</o-btn>

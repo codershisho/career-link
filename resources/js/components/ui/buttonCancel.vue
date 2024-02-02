@@ -1,10 +1,5 @@
 <template>
-  <v-btn
-    v-bind="$attrs"
-    color="grey"
-    variant="outlined"
-    prepend-icon="mdi-close-box"
-  >
+  <v-btn v-bind="$attrs" color="grey" variant="outlined" prepend-icon="mdi:mdi-close-box">
     キャンセル
   </v-btn>
 </template>

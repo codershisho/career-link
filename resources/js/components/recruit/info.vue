@@ -52,7 +52,7 @@
         color="primary"
         variant="outlined"
         rounded="1"
-        prepend-icon="mdi-arrow-up-bold-circle-outline"
+        prepend-icon="mdi:mdi-arrow-up-bold-circle-outline"
         @click="fileUpload"
       >
         アップロード

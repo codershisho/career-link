@@ -30,6 +30,7 @@ const chartOptions = {
       "2024年下半期",
     ],
   },
+  colors: ["#00ACC1"],
 };
 
 const series = [

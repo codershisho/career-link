@@ -21,6 +21,7 @@ const chartOptions = {
   xaxis: {
     categories: ["サプリ販促", "コスメ販促", "制作事業部", "ヨコテン事業部"],
   },
+  colors: ["#1E88E5"],
 };
 
 const series = [

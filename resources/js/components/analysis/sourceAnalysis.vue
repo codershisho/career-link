@@ -30,6 +30,7 @@ const chartOptions = {
       "その他",
     ],
   },
+  colors: ["#3949AB"],
 };
 
 const series = [

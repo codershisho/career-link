@@ -19,6 +19,7 @@
       <info v-if="tabName == 'infos'" />
       <docs v-if="tabName == 'docs'" />
       <result v-if="tabName == 'result'" />
+      <timeline v-if="tabName == 'timeline'" />
     </div>
   </div>
 </template>
@@ -31,6 +32,7 @@ import phase from "@/components/recruit/phase.vue";
 import info from "@/components/recruit/info.vue";
 import docs from "@/components/recruit/docs.vue";
 import result from "@/components/recruit/result.vue";
+import timeline from "@/components/recruit/timeline.vue";
 
 const props = defineProps({
   id: String,
@@ -46,16 +48,17 @@ const tabButtons = [
   ["基本情報", "infos", "mdi:mdi-information"],
   ["書類", "docs", "mdi:mdi-file-document-check"],
   ["選考結果", "result", "mdi:mdi-flag-checkered"],
+  ["タイムライン", "timeline", "mdi:mdi-flag-checkered"],
 ];
 </script>
 
 <style scoped>
 .tab-chip {
-  width: 30%;
+  width: 60%;
 }
 .tab-chip > div > span {
   margin-right: 8px;
-  width: 30%;
+  width: 20%;
   height: 2.5rem;
 }
 .tab-chip--selected {

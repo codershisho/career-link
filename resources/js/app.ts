@@ -42,6 +42,8 @@ const vuetify = createVuetify({
 import VueDatePicker from "@vuepic/vue-datepicker";
 import "@vuepic/vue-datepicker/dist/main.css";
 import VueApexCharts from "vue3-apexcharts";
+import { QuillEditor } from "@vueup/vue-quill";
+import "@vueup/vue-quill/dist/vue-quill.snow.css";
 
 // plugins
 import AxiosPlugin from "./plugins/axios";
@@ -71,6 +73,7 @@ app.use(router);
 app.use(AxiosPlugin);
 app.use(pinia);
 app.use(VueApexCharts);
+app.component("QuillEditor", QuillEditor);
 app.component("VueDatePicker", VueDatePicker);
 app.component("o-btn", abutton);
 app.component("save-btn", buttonSave);
